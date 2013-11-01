@@ -8,16 +8,19 @@ Wicked Forms is a Java library you can use to create dynamic forms in your Java 
 
 Use cases for dynamic forms include the following:
 
-* Rapid Prototyping: if you use Java Persistence API (JPA) for your database-driven web application you could process the JPA annotations
+* **Rapid Prototyping:** if you use Java Persistence API (JPA) for your database-driven web application you could process the JPA
+annotations
 and create dynamic forms for each of your entities to rapidly create CRUD functionality (Create, Update, Delete). As a bonus,
 you may want to add Bean Validation support to these forms. A JPA annotation processor is part of the roadmap of Wicked Forms (see issue 1 and issue 2).
-* User-Defined Forms: any use case that requires a user to define a form to be filled out by other users is a use case for dynamic forms.
+* **User-Defined Forms:** any use case that requires a user to define a form to be filled out by other users is a use case for dynamic
+forms.
 An application where a user may create questionnaires or surveys to be filled out by other users is an example. Wicked Forms provides all form input components you might need to create questionnaires.
-* Wizards: some forms may not need to be wholly user-defined but need to be configurable to a certain extent nonetheless. Such forms
+* **Wizards:** some forms may not need to be wholly user-defined but need to be configurable to a certain extent nonetheless. Such forms
 include wizards in which the second form changes it's input fields depending on the input the user has entered in the first form.
-* Form-Based Communication Protocols: if two applications need to exchange form-based data (i.e. structured data that has been entered by
+* **Form-Based Communication Protocols:** if two applications need to exchange form-based data (i.e. structured data that has been entered
+ by
 a user, for example in XML), dynamic forms are needed to display this data in a form to another user in the target application. An example of this has already been implemented as a showcase for the German XVergabe standard. See http://www.wicked-forms.org/wicked-forms-showcase-xvergabe.
-* Laziness: software developers are lazy by profession. Thus, you can let Wicked Forms create your forms for you without the hassle of
+* **Laziness:** software developers are lazy by profession. Thus, you can let Wicked Forms create your forms for you without the hassle of
 programming client-side validation, accessibility features, HTML5 input fields and CSS classes.
 
 Planned Features of Wicked Forms
