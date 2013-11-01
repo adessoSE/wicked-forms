@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>com.googlecode.wicked-forms</groupId>
+		<groupId>org.wickedsource.wickedforms</groupId>
 		<artifactId>wicked-forms-showcase</artifactId>
 		<version>1.0.0.BETA</version>
 	</parent>
@@ -36,7 +36,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.googlecode.wicked-forms</groupId>
+			<groupId>org.wickedsource.wickedforms</groupId>
 			<artifactId>wicked-forms-model</artifactId>
 		</dependency>
 

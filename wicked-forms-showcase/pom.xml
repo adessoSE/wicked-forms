@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.googlecode.wicked-forms</groupId>
+	<groupId>org.wickedsource.wickedforms</groupId>
 	<artifactId>wicked-forms-showcase</artifactId>
 	<version>1.0.0.BETA</version>
 
@@ -11,7 +11,7 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>../wicked-forms-parent</module>
+		<module>../wicked-forms</module>
 		<module>wicked-forms-examples</module>
 		<module>wicked-forms-showcase-wicket6</module>
 	</modules>
@@ -71,19 +71,19 @@
 			</dependency>
 
 			<dependency>
-				<groupId>com.googlecode.wicked-forms</groupId>
+				<groupId>org.wickedsource.wickedforms</groupId>
 				<artifactId>wicked-forms-model</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
-				<groupId>com.googlecode.wicked-forms</groupId>
+				<groupId>org.wickedsource.wickedforms</groupId>
 				<artifactId>wicked-forms-examples</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
-				<groupId>com.googlecode.wicked-forms</groupId>
+				<groupId>org.wickedsource.wickedforms</groupId>
 				<artifactId>wicked-forms-wicket6</artifactId>
 				<version>${project.version}</version>
 			</dependency>
