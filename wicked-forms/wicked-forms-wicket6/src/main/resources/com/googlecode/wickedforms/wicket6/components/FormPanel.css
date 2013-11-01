@@ -1,0 +1,260 @@
+/** * General styles */
+.wickedForm .formfields {
+/* 	width: 980px; margin: 20px; */
+	margin: 0 auto 100px;
+}
+
+.wickedForm,.wickedForm * {
+	font-family: "Tahoma", sans-serif;
+}
+
+.wickedForm * {
+	font-size: 12pt;
+}
+
+.wickedForm .error {
+	width: 100%;
+	margin-top: 1px;
+	display: inline-block; /*font-weight: bold;*/
+	position: relative;
+	top: 0px;
+	left: 260px;
+	color: #d8202d;
+}
+
+.wickedForm h1 {
+	font-size: 24pt;
+}
+
+.wickedForm .formRow{
+	width:100%;	
+}
+
+.wickedForm fieldset {
+	background: #fff;
+	margin-left: 10px;
+	margin-right: 10px;
+	padding: 10px;
+	border: 1px solid #E3E3E3;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 4px;
+	margin-bottom:10px;
+}
+
+/* .wickedForm fieldset fieldset { */
+/* 	background: url("../img/grid.png") repeat scroll center center #F5F5F5; */
+/* 	margin-top: 0; */
+/* 	border: 1px solid #E3E3E3; */
+/* } */
+
+.wickedForm fieldset legend {
+	font-size: 1.3em;
+	color: #2d4894;
+	padding: 0.3em;
+	font-weight: bold;
+	margin-bottom: 0;
+	border-bottom-color: #2d4894;
+	border-bottom: 0px;
+	width: auto;
+}
+
+/* .wickedForm fieldset fieldset legend { */
+/* 	font-size: 1.1em; */
+/* 	color: #9c9b9b; */
+/* 	padding: 0.3em; */
+/* 	font-weight: bold; */
+/* 	border-bottom-color: #ddd; */
+/* } */
+
+/** * List styles */
+.wickedForm ul {
+	list-style-type: none;
+	list-style-position: outside;
+	margin: 0px;
+	padding: 0px;
+}
+
+.wickedForm li {
+/* 	padding: 12px; */
+/* 	border-bottom: 1px solid #ccc; */
+	position: relative;
+/* 	min-height: 30px; */
+	padding-bottom:10px;
+	clear: both;
+}
+
+.wickedForm li:last-child {
+	border-bottom: none;
+}
+
+/** * Header */
+.wickedForm h1 {
+	margin: 0;
+	display: inline;
+}
+
+/** * Form elements */
+.wickedForm label {
+	width: 260px;
+	margin-top: 3px;
+	float: left;
+	padding: 3px; /*font-weight: bold; */
+	color: #333;
+	font-weight: bold;
+} /*NeKl*/
+
+.wickedForm span.fieldContainer{
+	display: block;
+    overflow: hidden;
+    padding: 0 15px 0 0;
+}
+
+.wickedForm input[type=checkbox],.wickedForm input[type=radio] {
+	width: 20px;
+	margin-top: -5px;
+}
+
+.wickedForm input,.wickedForm textarea,.wickedForm select {
+	width: 100%;
+	padding-right: 30px;
+	padding: 5px;
+	border: 1px solid #aaa;
+	box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
+	border-radius: 2px;
+}
+
+/** * HTML5 validation styles */
+.wickedForm input:required,.wickedForm textarea:required,.wickedForm select:required
+	{
+	background: #fff url(/wickedforms/red_asterisk.png) no-repeat 98% center;
+}
+
+.wickedForm input:required:valid,.wickedForm textarea:required:valid,.wickedForm select:required:valid
+	{
+	background: #fff url(/wickedforms/valid.png) no-repeat 98% center;
+	box-shadow: 0 0 5px #5cd053;
+	border-color: #28921f;
+}
+
+.wickedForm input:focus:invalid,.wickedForm textarea:focus:invalid,.wickedForm select:focus:invalid
+	{
+	background: #fff url(/wickedforms/invalid.png) no-repeat 98% center;
+	box-shadow: 0 0 5px #d45252;
+	border-color: #b03535
+}
+
+/** * Form hints */
+.hint {
+	background: #006ec7;
+	float: left;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	color: white;
+	padding: 3px 6px;
+	z-index: 999; /* hints stay above all other elements */
+/* 	position: absolute; allows proper formatting if hint is two lines */
+	display: none;
+	left: 5px;
+	margin-left: 265px;
+	min-width: 200px;
+/* 	margin-top: 5px; */
+}
+
+.wickedForm input:focus+.hint,.wickedForm textarea:focus+.hint,.wickedForm select:focus+.hint
+	{
+	display: inline;
+}
+
+/** * Button styles */
+.wickedForm input[type=submit], .wickedForm input[type=button] { /*background: rgb(222, 222, 242);
+    background: -moz-linear-gradient(top, rgba(222, 222, 242, 1) 0%, rgba(234, 236, 248, 1) 60%, rgba(248, 248, 252, 1) 100% );
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(222, 222, 242, 1) ), color-stop(60%, rgba(234, 236, 248, 1) ), color-stop(100%, rgba(248, 248, 252, 1) ) );
+    background: -webkit-linear-gradient(top, rgba(222, 222, 242, 1) 0%, rgba(234, 236, 248, 1) 60%, rgba(248, 248, 252, 1) 100% );
+    background: -o-linear-gradient(top, rgba(222, 222, 242, 1) 0%, rgba(234, 236, 248, 1) 60%, rgba(248, 248, 252, 1) 100% );
+    background: -ms-linear-gradient(top, rgba(222, 222, 242, 1) 0%, rgba(234, 236, 248, 1) 60%, rgba(248, 248, 252, 1) 100% );
+    background: linear-gradient(to bottom, rgba(222, 222, 242, 1) 0%, rgba(234, 236, 248, 1) 60%, rgba(248, 248, 252, 1) 100% );
+    filter: progid : DXImageTransform.Microsoft.gradient ( startColorstr = '#dedef2', endColorstr = '#f8f8fc', GradientType = 0 );*/
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	background-color: #006ec7;
+	background-color: -moz-linear-gradient(left, #006ec 70%, #0088cc 100%);
+	/*FF3.6+*/
+	background-color: -webkit-gradient(linear, lefttop, righttop, color-stop(0%, #006ec7),
+		color-stop(100%, #0088cc) ); /*Chrome,Safari4+*/
+	background-color: -webkit-linear-gradient(left, #006ec 70%, #0088cc 100%);
+	/*Chrome10+,Safari5.1+*/
+	background-color: -o-linear-gradient(left, #006ec 70%, #0088cc 100%);
+	/*Opera11.10+*/
+	background-color: -ms-linear-gradient(left, #006ec 70%, #0088cc 100%);
+	/*IE10+*/
+	background-color: linear-gradient(toright, #006ec 70%, #0088cc 100%);
+	/*W3C*/
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#006ec7',
+		endColorstr='#0088cc', GradientType=1 ); /*IE6-8*/
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	border: 1px solid #CCCCCC;
+	color: #fff;
+	font-weight: bold;
+	padding: 6px 20px;
+	text-align: center;
+	margin-top: 10px;
+	margin-left: 573px;
+	float: left;
+	width: 300px;
+	margin-bottom: 10px;
+}
+
+.wickedForm input[type=submit]:hover, .wickedForm input[type=button]:hover {
+	opacity: .85;
+	cursor: pointer;
+}
+
+.wickedForm input[type=submit]:active .wickedForm input[type=button]:active{
+	border: 1px solid #000000;
+}
+
+/** * Radio Group */
+.wickedForm .radioGroup,.wickedForm .checkboxGroup {
+	float:left;
+}
+
+.wickedForm .radioGroup br,.wickedForm .checkboxGroup br {
+	line-height: 0;
+	clear: both;
+}
+
+.wickedForm .radioGroup label,.wickedForm .checkboxGroup label {
+	font-weight: normal;
+	clear: both;
+	float: none;
+	display: inline-block;
+	width: auto;
+}
+
+.feedback {
+	border: 1px solid;
+	margin: 0px 0px;
+	padding: 10px 0px 5px 10px;
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	color: #D8000C;
+	background-color: #FFBABA;
+/* 	background-image: url(/wickedforms/invalid.png); */
+}
+
+/*NeKl*/
+.navbar-fixed-top,.navbar-fixed-bottom {
+	position: absolute !important;
+}
+
