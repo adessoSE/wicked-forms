@@ -5,7 +5,7 @@ jdk:
   - openjdk7
 
 install:
-  - sh -c 'cd wicked-forms' && mvn clean install -DskipTests=true
+  - cd wicked-forms && mvn clean install -DskipTests=true
 
 script:
-  - sh -c 'cd wicked-forms' && mvn test
+  - cd wicked-forms && mvn test
