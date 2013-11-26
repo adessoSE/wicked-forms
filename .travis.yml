@@ -8,4 +8,4 @@ install:
   - cd wicked-forms && mvn clean install -DskipTests=true
 
 script:
-  - cd wicked-forms && mvn test
+  - mvn test
