@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/matthiasbalke/wicked-forms.png?branch=master)](https://travis-ci.org/matthiasbalke/wicked-forms)
+
 Showcase
 ========
 http://www.wicked-forms.org/wicked-forms-showcase-wicket6/
