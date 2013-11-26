@@ -1,6 +1,8 @@
 Wicked Forms
 ============
 [![Build Status](https://travis-ci.org/matthiasbalke/wicked-forms.png?branch=travis)](https://travis-ci.org/matthiasbalke/wicked-forms)
+[![Coverage Status](https://coveralls.io/repos/matthiasbalke/wicked-forms/badge.png?branch=coverage)](https://coveralls.io/r/matthiasbalke/wicked-forms?branch=coverage)
+
 
 Showcase
 ========
