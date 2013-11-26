@@ -1,0 +1,14 @@
+language: java
+
+jdk:
+  - oraclejdk7
+  - openjdk7
+
+install:
+  - cd wicked-forms && mvn clean install -DskipTests=true
+
+script:
+  - mvn test
+
+after_success:
+  - mvn clean cobertura:cobertura coveralls:cobertura

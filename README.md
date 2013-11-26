@@ -1,3 +1,8 @@
+Wicked Forms
+============
+[![Build Status](https://travis-ci.org/thombergs/wicked-forms.png)](https://travis-ci.org/thombergs/wicked-forms)
+[![Coverage Status](https://coveralls.io/repos/thombergs/wicked-forms/badge.png)](https://coveralls.io/r/thombergs/wicked-forms)
+
 Showcase
 ========
 http://www.wicked-forms.org/wicked-forms-showcase-wicket6/
