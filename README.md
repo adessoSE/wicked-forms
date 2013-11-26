@@ -1,6 +1,6 @@
 Wicked Forms
 ============
-[![Build Status](https://travis-ci.org/matthiasbalke/wicked-forms.png?branch=travis)](https://travis-ci.org/matthiasbalke/wicked-forms)
+[![Build Status](https://travis-ci.org/thombergs/wicked-forms.png?branch=travis)](https://travis-ci.org/thombergs/wicked-forms)
 
 Showcase
 ========
