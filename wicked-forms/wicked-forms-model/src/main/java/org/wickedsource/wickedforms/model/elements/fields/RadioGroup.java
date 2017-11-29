@@ -27,38 +27,29 @@ import java.util.List;
  * @param <T>
  *            type of the objects that the user may select from.
  */
-public class RadioGroupModel<T> extends
-		AbstractSingleChoiceModel<T> {
+public class RadioGroup<T> extends
+    AbstractSingleChoice<T> {
 
-	public RadioGroupModel(final String label, final List<T> choices, Class<T> modelClass) {
+	public RadioGroup(final String label, final List<T> choices, Class<T> modelClass) {
 		super(label, choices, modelClass);
 	}
 
-	/**
-	 * @see AbstractSingleChoiceModel#SingleChoice(String, List)
-	 */
-	public RadioGroupModel(final String label, final List<T> choices, final ChoiceLabeller<T> choiceLabeller,
+	public RadioGroup(final String label, final List<T> choices, final ChoiceLabeller<T> choiceLabeller,
 			Class<T> modelClass) {
 		super(label, choices, choiceLabeller, modelClass);
 	}
 
-	/**
-	 * @see AbstractSingleChoiceModel#SingleChoice(String, List, Object)
-	 */
-	public RadioGroupModel(final String label, final List<T> choices, final ChoiceLabeller<T> choiceLabeller,
+	public RadioGroup(final String label, final List<T> choices, final ChoiceLabeller<T> choiceLabeller,
 			final T selectedValue, Class<T> modelClass) {
 		super(label, choices, choiceLabeller, selectedValue, modelClass);
 	}
 
-	/**
-	 * @see AbstractSingleChoiceModel#SingleChoice(String, List, Binding)
-	 */
-	public RadioGroupModel(final String label, final List<T> choices, final ChoiceLabeller<T> choiceLabeller,
+	public RadioGroup(final String label, final List<T> choices, final ChoiceLabeller<T> choiceLabeller,
 			final Binding<T> binding, Class<T> modelClass) {
 		super(label, choices, choiceLabeller, binding, modelClass);
 	}
 
-	public RadioGroupModel(final List<T> choices, final ChoiceLabeller<T> choiceLabeller, Class<T> modelClass) {
+	public RadioGroup(final List<T> choices, final ChoiceLabeller<T> choiceLabeller, Class<T> modelClass) {
 		super(choices, choiceLabeller, modelClass);
 	}
 

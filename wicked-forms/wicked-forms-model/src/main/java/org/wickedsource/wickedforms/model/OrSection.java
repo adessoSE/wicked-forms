@@ -12,31 +12,12 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package org.wickedsource.wickedforms.model.elements.fields;
+package org.wickedsource.wickedforms.model;
 
-import org.wickedsource.wickedforms.model.binding.Binding;
+public class OrSection extends Section {
 
-public class IntegerTextFieldModel extends TextFieldModel<Integer> {
-
-	public IntegerTextFieldModel() {
-		super(Integer.class);
-	}
-
-	public IntegerTextFieldModel(final String label) {
-		super(label, Integer.class);
-	}
-
-	public IntegerTextFieldModel(final String label, final Binding<Integer> binding) {
-		super(label, binding, Integer.class);
-	}
-
-	public IntegerTextFieldModel(final String label, final Integer value) {
-		super(label, value, Integer.class);
-	}
-
-	@Override
-	public Class<Integer> getModelClass() {
-		return Integer.class;
+	public OrSection(String message) {
+		super(message);
 	}
 
 }

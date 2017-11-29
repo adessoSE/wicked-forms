@@ -14,7 +14,7 @@
  */
 package org.wickedsource.wickedforms.model.validation;
 
-import org.wickedsource.wickedforms.model.elements.fields.AbstractInputFieldModel;
+import org.wickedsource.wickedforms.model.elements.fields.AbstractInputField;
 
 import java.io.Serializable;
 import java.util.List;
@@ -26,7 +26,7 @@ import java.util.List;
  * @author Tom Hombergs (tom.hombergs@gmail.com)
  * 
  */
-public interface FormValidatorModel extends Serializable {
+public interface FormValidator extends Serializable {
 
 	/**
 	 * Returns a list of the input fields that are relevant to this form
@@ -35,7 +35,7 @@ public interface FormValidatorModel extends Serializable {
 	 * 
 	 * @return list of the relevant input fields.
 	 */
-	List<AbstractInputFieldModel<?>> getRelevantInputFields();
+	List<AbstractInputField<?>> getRelevantInputFields();
 
 	/**
 	 * Implements the actual validation rule. Only input fields that are
@@ -43,8 +43,8 @@ public interface FormValidatorModel extends Serializable {
 	 * method.
 	 * <p/>
 	 * The values of the input field that are to be validated must be accessed
-	 * by calling {@link AbstractInputFieldModel#getUserInput()} and
-	 * <strong>NOT</strong> by {@link AbstractFormElementModel#getValue()}, since the
+	 * by calling {@link AbstractInputField#getUserInput()} and
+	 * <strong>NOT</strong> by {@link org.wickedsource.wickedforms.model.elements.AbstractBoundField#getValue()}, since the
 	 * real value is only updated after validation has succeeded.
 	 * 
 	 * @param feedback

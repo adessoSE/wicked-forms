@@ -17,7 +17,7 @@ package org.wickedsource.wickedforms.wicket6.components.fields;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.model.PropertyModel;
-import org.wickedsource.wickedforms.model.elements.fields.CheckboxModel;
+import org.wickedsource.wickedforms.model.elements.fields.Checkbox;
 
 /**
  * A panel that represents a {@link CheckboxModel_TEMP} in a form.
@@ -37,7 +37,7 @@ public class CheckboxPanel extends AbstractInputFieldPanel<Boolean> {
 
 	private final CheckBox checkbox;
 
-	public CheckboxPanel(String id, CheckboxModel model) {
+	public CheckboxPanel(String id, Checkbox model) {
 		super(id, model);
 
 		this.checkbox = new CheckBox("inputField", new PropertyModel<Boolean>(model, "value"));

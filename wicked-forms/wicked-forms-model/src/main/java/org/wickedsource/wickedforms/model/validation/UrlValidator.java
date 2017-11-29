@@ -12,12 +12,19 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package org.wickedsource.wickedforms.model;
+package org.wickedsource.wickedforms.model.validation;
 
-public class XorSectionModel extends SectionModel{
+import org.wickedsource.wickedforms.model.elements.fields.AbstractInputField;
 
-	public XorSectionModel(String message) {
-		super(message);
+public class UrlValidator implements FieldValidator<String> {
+
+	@Override
+	public void validate(final AbstractInputField<String> inputField, final String value,
+	    final ValidationFeedback feedback) {
+		if (!value
+		    .matches("(http|ftp|https):\\/\\/[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&amp;:/~\\+#]*[\\w\\-\\@?^=%&amp;/~\\+#])?")) {
+			feedback.error(String.format("The value for '%s' is not a valid URL!", inputField.getLabel()));
+		}
+
 	}
-
 }

@@ -17,14 +17,14 @@ package org.wickedsource.wickedforms.wicket6.components.fields;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.CheckBoxMultipleChoice;
 import org.apache.wicket.model.PropertyModel;
-import org.wickedsource.wickedforms.model.elements.fields.CheckboxGroupModel;
+import org.wickedsource.wickedforms.model.elements.fields.CheckboxGroup;
 import org.wickedsource.wickedforms.wicket6.components.WickedFormsChoiceRenderer;
 
 import java.util.Collection;
 import java.util.List;
 
 /**
- * A panel that represents a {@link CheckboxGroupModel} in a form.
+ * A panel that represents a {@link CheckboxGroup} in a form.
  * <p/>
  * <strong>Wicket IDs needed in the markup:</strong>
  * <ul>
@@ -41,7 +41,7 @@ public class CheckboxGroupPanel<T> extends AbstractInputFieldPanel<List<T>> {
 
 	private final CheckBoxMultipleChoice<T> checkgroup;
 
-	public CheckboxGroupPanel(final String id, final CheckboxGroupModel<T> model) {
+	public CheckboxGroupPanel(final String id, final CheckboxGroup<T> model) {
 		super(id, model);
 
 		this.checkgroup = new CheckBoxMultipleChoice<T>("inputField",

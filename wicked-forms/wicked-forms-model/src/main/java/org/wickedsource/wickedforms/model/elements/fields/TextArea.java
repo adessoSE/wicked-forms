@@ -24,32 +24,23 @@ import org.wickedsource.wickedforms.model.binding.Binding;
  * @author Tom Hombergs (tom.hombergs@gmail.com)
  * 
  */
-public class TextAreaModel extends AbstractInputFieldModel<String> {
+public class TextArea extends AbstractInputField<String> {
 
 	private String placeholder;
 
-	/**
-	 * @see AbstractInputFieldModel#InputField(String)
-	 */
-	public TextAreaModel(String label) {
+	public TextArea(String label) {
 		super(label);
 	}
 
-	/**
-	 * @see AbstractInputFieldModel#InputField(String, Boolean)
-	 */
-	public TextAreaModel(String label, String value) {
+	public TextArea(String label, String value) {
 		super(label, value);
 	}
 
-	public TextAreaModel() {
+	public TextArea() {
 		super();
 	}
 
-	/**
-	 * @see AbstractInputFieldModel#InputField(String, Binding)
-	 */
-	public TextAreaModel(String label, Binding<String> binding) {
+	public TextArea(String label, Binding<String> binding) {
 		super(label, binding);
 	}
 

@@ -14,25 +14,25 @@
  */
 package org.wickedsource.wickedforms.model.elements;
 
-import org.wickedsource.wickedforms.model.SectionModel;
+import org.wickedsource.wickedforms.model.Section;
 
 import java.io.Serializable;
 
 /**
  * Base class for all elements that are contained within a form. A
- * {@link AbstractFormElementModel} contains a value of type T that is displayed
+ * {@link AbstractFormElement} contains a value of type T that is displayed
  * to the user as the content of the form element.
  * 
  * @author Tom Hombergs (tom.hombergs@gmail.com)
  * 
  */
-public abstract class AbstractFormElementModel implements Serializable {
+public abstract class AbstractFormElement implements Serializable {
 
 	private String id;
 
 	private Integer index;
 
-	private SectionModel parentSection;
+	private Section parentSection;
 
 	private boolean discarded = false;
 
@@ -65,13 +65,13 @@ public abstract class AbstractFormElementModel implements Serializable {
 		if (obj == null) {
 			return false;
 		}
-		if (!(obj instanceof AbstractFormElementModel)) {
+		if (!(obj instanceof AbstractFormElement)) {
 			return false;
 		}
 		if (this.id == null) {
 			return false;
 		}
-		AbstractFormElementModel that = (AbstractFormElementModel) obj;
+		AbstractFormElement that = (AbstractFormElement) obj;
 		return this.id.equals(that.id);
 	}
 
@@ -83,11 +83,11 @@ public abstract class AbstractFormElementModel implements Serializable {
 		return index;
 	}
 
-	public void setParentSection(SectionModel parentSection) {
+	public void setParentSection(Section parentSection) {
 		this.parentSection = parentSection;
 	}
 
-	public SectionModel getParentSection() {
+	public Section getParentSection() {
 		return parentSection;
 	}
 
@@ -98,7 +98,7 @@ public abstract class AbstractFormElementModel implements Serializable {
 	 * <p/>
 	 * A use case for discarding a form element is when a user clicks on a
 	 * "remove this section" button. The section is not actually removed from
-	 * the FormModel but instead marked "discarded", so that frameworks that
+	 * the Form but instead marked "discarded", so that frameworks that
 	 * work with list indices still function. Elements marked as "discarded"
 	 * should not be evaluated in the form's onSubmit method!
 	 * <p/>

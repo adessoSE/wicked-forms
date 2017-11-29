@@ -14,8 +14,8 @@
  */
 package org.wickedsource.wickedforms.model;
 
-import org.wickedsource.wickedforms.model.elements.AbstractFormElementModel;
-import org.wickedsource.wickedforms.model.validation.FormValidatorModel;
+import org.wickedsource.wickedforms.model.elements.AbstractFormElement;
+import org.wickedsource.wickedforms.model.validation.FormValidator;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ import java.util.List;
 
 /**
  * This class is the starting point for creating a dynamic form with Wicked
- * Forms. You can add one or more {@link SectionModel}s to the form, which in
+ * Forms. You can add one or more {@link Section}s to the form, which in
  * turn contain the actual form elements.
  * <p/>
  * Wicked Forms interpreters should display the form as a HTML form that
@@ -32,11 +32,11 @@ import java.util.List;
  * @author Tom Hombergs (tom.hombergs@gmail.com)
  * 
  */
-public class FormModel implements Serializable {
+public class Form implements Serializable {
 
-	private final SectionModel mainSection = new SectionModel();
+	private final Section mainSection = new Section();
 
-	private final List<FormValidatorModel> validators = new ArrayList<FormValidatorModel>();
+	private final List<FormValidator> validators = new ArrayList<FormValidator>();
 
 	private final String label;
 
@@ -48,7 +48,7 @@ public class FormModel implements Serializable {
 	 *            prominently at the top of the form by a Wicked Forms
 	 *            interpreter.
 	 */
-	public FormModel(final String label) {
+	public Form(final String label) {
 		this.label = label;
 	}
 
@@ -63,7 +63,7 @@ public class FormModel implements Serializable {
 	 *            the form element to add.
 	 * @return this object for chaining
 	 */
-	public FormModel add(final AbstractFormElementModel formElement) {
+	public Form add(final AbstractFormElement formElement) {
 		getMainSection().add(formElement);
 		return this;
 	}
@@ -75,7 +75,7 @@ public class FormModel implements Serializable {
 	 *            the validator to add.
 	 * @return this object for chaining
 	 */
-	public FormModel add(final FormValidatorModel validator) {
+	public Form add(final FormValidator validator) {
 		validators.add(validator);
 		return this;
 	}
@@ -85,7 +85,7 @@ public class FormModel implements Serializable {
 	 * 
 	 * @return the list of validators.
 	 */
-	public List<FormValidatorModel> getValidators() {
+	public List<FormValidator> getValidators() {
 		return validators;
 	}
 
@@ -97,7 +97,7 @@ public class FormModel implements Serializable {
 		getMainSection().assignIds(1);
 	}
 
-	public SectionModel getMainSection() {
+	public Section getMainSection() {
 		return mainSection;
 	}
 

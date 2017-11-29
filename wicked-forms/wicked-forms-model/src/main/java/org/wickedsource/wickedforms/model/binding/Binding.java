@@ -15,9 +15,10 @@
 package org.wickedsource.wickedforms.model.binding;
 
 import java.io.Serializable;
+import org.wickedsource.wickedforms.model.elements.AbstractFormElement;
 
 /**
- * This interface defines a binding / a link between a {@link org.wickedsource.wickedforms.model.elements.AbstractFormElementModel} and
+ * This interface defines a binding / a link between a {@link AbstractFormElement} and
  * an arbitrary Java object. Form elements like input fields will then display
  * the value of the bound java object. If the user enters a value into the form
  * element, it will in turn be stored into the bound object.

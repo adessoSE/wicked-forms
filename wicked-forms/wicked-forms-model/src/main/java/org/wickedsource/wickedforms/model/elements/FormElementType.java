@@ -14,8 +14,8 @@
  */
 package org.wickedsource.wickedforms.model.elements;
 
-import org.wickedsource.wickedforms.model.SectionModel;
-import org.wickedsource.wickedforms.model.elements.buttons.AddSectionButtonModel;
+import org.wickedsource.wickedforms.model.Section;
+import org.wickedsource.wickedforms.model.elements.buttons.AddSectionButton;
 import org.wickedsource.wickedforms.model.elements.fields.*;
 
 /**
@@ -30,29 +30,29 @@ import org.wickedsource.wickedforms.model.elements.fields.*;
  */
 public enum FormElementType {
 
-	TEXT(TextModel.class),
+	TEXT(Text.class),
 
-	CHECKBOX(CheckboxModel.class),
+	CHECKBOX(Checkbox.class),
 
-	TEXTFIELD(TextFieldModel.class),
+	TEXTFIELD(TextField.class),
 
-	DROPDOWN(DropDownModel.class),
+	DROPDOWN(DropDown.class),
 
-	RADIO(RadioGroupModel.class),
+	RADIO(RadioGroup.class),
 
-	CHECKBOXGROUP(CheckboxGroupModel.class),
+	CHECKBOXGROUP(CheckboxGroup.class),
 
-	TEXTAREA(TextAreaModel.class),
+	TEXTAREA(TextArea.class),
 
-	SECTION(SectionModel.class),
+	SECTION(Section.class),
 
-	ADDSECTIONBUTTON(AddSectionButtonModel.class),
+	ADDSECTIONBUTTON(AddSectionButton.class),
 
-	TEXTFIELD_STRING(StringTextFieldModel.class),
+	TEXTFIELD_STRING(StringTextField.class),
 
-	TEXTFIELD_INTEGER(IntegerTextFieldModel.class);
+	TEXTFIELD_INTEGER(IntegerTextField.class);
 
-	public static <T extends AbstractFormElementModel> FormElementType ofObject(AbstractFormElementModel formElement) {
+	public static <T extends AbstractFormElement> FormElementType ofObject(AbstractFormElement formElement) {
 		for (FormElementType elementType : FormElementType.values()) {
 			if (elementType.getElementClass().isInstance(formElement)) {
 				return elementType;
@@ -61,13 +61,13 @@ public enum FormElementType {
 		return null;
 	}
 
-	private final Class<? extends AbstractFormElementModel> elementClass;
+	private final Class<? extends AbstractFormElement> elementClass;
 
-	private FormElementType(final Class<? extends AbstractFormElementModel> elementClass) {
+	private FormElementType(final Class<? extends AbstractFormElement> elementClass) {
 		this.elementClass = elementClass;
 	}
 
-	public Class<? extends AbstractFormElementModel> getElementClass() {
+	public Class<? extends AbstractFormElement> getElementClass() {
 		return this.elementClass;
 	}
 

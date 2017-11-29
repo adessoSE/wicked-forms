@@ -1,19 +1,19 @@
 package org.wickedsource.wickedforms.formelements;
 
-import org.wickedsource.wickedforms.model.FormModel;
-import org.wickedsource.wickedforms.model.elements.TextModel;
+import org.wickedsource.wickedforms.model.Form;
+import org.wickedsource.wickedforms.model.elements.Text;
 
-public class TextExample extends FormModel {
+public class TextExample extends Form {
 
 	public TextExample() {
 		super("Plain Text Example");
 
-		add(new TextModel(
+		add(new Text(
 		        "Sometimes you will need to add simple plain text to a form " +
 		            "to explain some input field to the user. You can do this by adding " +
-		            "a TextModel like this to the form."));
+		            "a Text like this to the form."));
 
-		add(new TextModel(
+		add(new Text(
 		    "This is a second text. You will see explaining texts like these " +
 		        "everywhere across the showcase."));
 

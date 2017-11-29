@@ -14,9 +14,9 @@
  */
 package org.wickedsource.wickedforms.model;
 
-public class OrSectionModel extends SectionModel{
+public class XorSection extends Section {
 
-	public OrSectionModel(String message) {
+	public XorSection(String message) {
 		super(message);
 	}
 

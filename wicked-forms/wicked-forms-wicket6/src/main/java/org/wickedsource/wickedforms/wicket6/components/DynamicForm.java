@@ -15,24 +15,23 @@
 package org.wickedsource.wickedforms.wicket6.components;
 
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.IModel;
-import org.wickedsource.wickedforms.model.FormModel;
-import org.wickedsource.wickedforms.model.validation.FormValidatorModel;
+import org.wickedsource.wickedforms.model.Form;
+import org.wickedsource.wickedforms.model.validation.FormValidator;
 import org.wickedsource.wickedforms.wicket6.PanelFactory;
 import org.wickedsource.wickedforms.wicket6.components.fields.SectionPanel;
 import org.wickedsource.wickedforms.wicket6.validators.WickedFormValidator;
 
-public class DynamicForm extends Form<FormModel> {
+public class DynamicForm extends org.apache.wicket.markup.html.form.Form {
 
 	private final Submittable submittable;
 
-	public DynamicForm(final String id, final IModel<FormModel> model, PanelFactory panelFactory,
+	public DynamicForm(final String id, final IModel<Form> model, PanelFactory panelFactory,
 			Submittable submittable) {
 		super(id, model);
 		this.submittable = submittable;
-		FormModel formModel = model.getObject();
+		Form form = model.getObject();
 		FeedbackPanel feedbackPanel = new FeedbackPanel("feedback") {
 			@Override
 			public boolean isVisible() {
@@ -41,17 +40,17 @@ public class DynamicForm extends Form<FormModel> {
 		};
 
 		add(feedbackPanel);
-		add(new Label("formTitle", formModel.getLabel()));
-		add(new SectionPanel("sectionPanel", formModel.getMainSection(), panelFactory));
+		add(new Label("formTitle", form.getLabel()));
+		add(new SectionPanel("sectionPanel", form.getMainSection(), panelFactory));
 
-		for (FormValidatorModel formValidator : formModel.getValidators()) {
+		for (FormValidator formValidator : form.getValidators()) {
 			add(new WickedFormValidator(formValidator, this));
 		}
 	}
 
 	@Override
 	protected void onSubmit() {
-		this.submittable.onSubmit(getModelObject());
+		this.submittable.onSubmit((Form) getModelObject());
 	}
 
 }

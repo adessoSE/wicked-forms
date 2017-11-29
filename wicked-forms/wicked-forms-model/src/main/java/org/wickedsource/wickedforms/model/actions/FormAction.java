@@ -14,32 +14,33 @@
  */
 package org.wickedsource.wickedforms.model.actions;
 
-import org.wickedsource.wickedforms.model.elements.AbstractFormElementModel;
-import org.wickedsource.wickedforms.model.elements.fields.AbstractInputFieldModel;
+import org.wickedsource.wickedforms.model.Form;
+import org.wickedsource.wickedforms.model.elements.AbstractFormElement;
+import org.wickedsource.wickedforms.model.elements.fields.AbstractInputField;
 
 import java.io.Serializable;
 import java.util.List;
 
-public interface FormActionModel<T> extends Serializable {
+public interface FormAction<T> extends Serializable {
 
 /**
 	 * Returns a list of the input fields which act as trigger to this action.
 	 * If the user changes the values in these fields, the action is triggered.
 	 * The values the user entered into the returned input fields can be
-	 * accessed within the {@link #execute()} method via {@link AbstractInputFieldModel#getUserInput().
+	 * accessed within the {@link #execute()} method via {@link AbstractInputField#getUserInput().
 	 * 
 	 * @return list of the input fields that act as trigger to this action.
 	 */
-	List<AbstractInputFieldModel<?>> getTriggerInputFields();
+	List<AbstractInputField<?>> getTriggerInputFields();
 
 	/**
 	 * Executes the action. All elements returned by
 	 * {@link #getTriggerInputFields()} have their user input values updated
 	 * which can be accessed here via
-	 * {@link AbstractInputFieldModel#getUserInput()}.
+	 * {@link AbstractInputField#getUserInput()}.
 	 * <p/>
 	 * Within this method, you can change the state of form elements within your
-	 * {@link FormModel} as you wish. However, <strong>no new form elements may
+	 * {@link Form} as you wish. However, <strong>no new form elements may
 	 * be added and no existing form elements may be removed</strong>! All form
 	 * elements whose state has changed must be part of the result list of this
 	 * method so that the interpreter knows which elements he has to re-render.
@@ -47,6 +48,6 @@ public interface FormActionModel<T> extends Serializable {
 	 * @return list of all form elements whose state has changed within this
 	 *         method.
 	 */
-	List<AbstractFormElementModel> execute();
+	List<AbstractFormElement> execute();
 
 }

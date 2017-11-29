@@ -16,18 +16,17 @@ package org.wickedsource.wickedforms.wicket6.components.fields;
 
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.model.PropertyModel;
-import org.wickedsource.wickedforms.model.elements.fields.TextAreaModel;
+import org.wickedsource.wickedforms.model.elements.fields.TextArea;
 
 /**
- * A panel that represents a {@link TextAreaModel} in a form.
+ * A panel that represents a {@link TextArea} in a form.
  * <p/>
  * <strong>Wicket IDs needed in the markup:</strong>
  * <ul>
  * <li><strong>label</strong>: a {@link Label} that displays the label of the
  * text field.
- * <li><strong>inputField</strong>: a {@link TextArea} that takes the user's
+ * <li><strong>inputField</strong>: a {@link org.apache.wicket.markup.html.form.TextArea} that takes the user's
  * input.
  * </ul>
  * 
@@ -36,12 +35,12 @@ import org.wickedsource.wickedforms.model.elements.fields.TextAreaModel;
  */
 public class TextAreaPanel extends AbstractInputFieldPanel<String> {
 
-	private final TextArea<String> textField;
+	private final org.apache.wicket.markup.html.form.TextArea textField;
 
-	public TextAreaPanel(String id, TextAreaModel model) {
+	public TextAreaPanel(String id, TextArea model) {
 		super(id, model);
 
-		this.textField = new TextArea<String>("inputField", new PropertyModel<String>(model, "value"));
+		this.textField = new org.apache.wicket.markup.html.form.TextArea("inputField", new PropertyModel<String>(model, "value"));
 		this.decorateComponent(this.textField);
 
 		if (model.getPlaceHolder() != null && !"".equals(model.getPlaceHolder())) {

@@ -27,33 +27,24 @@ import java.util.List;
  * @param <T>
  *            the type of the items that can be selected by the drop down field.
  */
-public class DropDownModel<T> extends
-		AbstractSingleChoiceModel<T> {
+public class DropDown<T> extends
+    AbstractSingleChoice<T> {
 
-	public DropDownModel(final String label, final List<T> choices, Class<T> modelClass) {
+	public DropDown(final String label, final List<T> choices, Class<T> modelClass) {
 		super(label, choices, modelClass);
 	}
 
-	/**
-	 * @see AbstractSingleChoiceModel#SingleChoice(String, List)
-	 */
-	public DropDownModel(final String label, final List<T> choices, final ChoiceLabeller<T> choiceLabeller,
+	public DropDown(final String label, final List<T> choices, final ChoiceLabeller<T> choiceLabeller,
 			Class<T> modelClass) {
 		super(label, choices, choiceLabeller, modelClass);
 	}
 
-	/**
-	 * @see AbstractSingleChoiceModel#SingleChoice(String, List, Object)
-	 */
-	public DropDownModel(final String label, final List<T> choices, final ChoiceLabeller<T> choiceLabeller,
+	public DropDown(final String label, final List<T> choices, final ChoiceLabeller<T> choiceLabeller,
 			final T selectedValue, Class<T> modelClass) {
 		super(label, choices, choiceLabeller, selectedValue, modelClass);
 	}
 
-	/**
-	 * @see AbstractSingleChoiceModel#SingleChoice(String, List, Binding)
-	 */
-	public DropDownModel(final String label, final List<T> choices, final ChoiceLabeller<T> choiceLabeller,
+	public DropDown(final String label, final List<T> choices, final ChoiceLabeller<T> choiceLabeller,
 			final Binding<T> binding, Class<T> modelClass) {
 		super(label, choices, choiceLabeller, binding, modelClass);
 	}

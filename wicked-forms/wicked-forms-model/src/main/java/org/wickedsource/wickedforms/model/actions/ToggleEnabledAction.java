@@ -14,8 +14,8 @@
  */
 package org.wickedsource.wickedforms.model.actions;
 
-import org.wickedsource.wickedforms.model.elements.AbstractFormElementModel;
-import org.wickedsource.wickedforms.model.elements.fields.AbstractInputFieldModel;
+import org.wickedsource.wickedforms.model.elements.AbstractFormElement;
+import org.wickedsource.wickedforms.model.elements.fields.AbstractInputField;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,13 +30,13 @@ import java.util.List;
  * @param <T>
  *            the type of object that the trigger input field is bound to.
  */
-public class ToggleEnabledAction<T> implements FormActionModel<T> {
+public class ToggleEnabledAction<T> implements FormAction<T> {
 
-	private final AbstractInputFieldModel<T> triggerInputField;
+	private final AbstractInputField<T> triggerInputField;
 
 	private final T enabledValue;
 
-	private final List<AbstractInputFieldModel<?>> targetElements;
+	private final List<AbstractInputField<?>> targetElements;
 
 	/**
 	 * Constructs a new instance.
@@ -51,8 +51,8 @@ public class ToggleEnabledAction<T> implements FormActionModel<T> {
 	 * @param targetInputFields
 	 *            The input fields that are the target of this action.
 	 */
-	public ToggleEnabledAction(AbstractInputFieldModel<T> triggerInputField, T enabledValue, T disabledValue,
-			List<AbstractInputFieldModel<?>> targetInputFields) {
+	public ToggleEnabledAction(AbstractInputField<T> triggerInputField, T enabledValue, T disabledValue,
+			List<AbstractInputField<?>> targetInputFields) {
 		this.triggerInputField = triggerInputField;
 		this.enabledValue = enabledValue;
 		this.targetElements = targetInputFields;
@@ -74,8 +74,8 @@ public class ToggleEnabledAction<T> implements FormActionModel<T> {
 	 * @param targetInputFields
 	 *            The input fields that are the target of this action.
 	 */
-	public ToggleEnabledAction(AbstractInputFieldModel<T> triggerInputField, T enabledValue, 
-			AbstractInputFieldModel<?>... targetInputFields) {
+	public ToggleEnabledAction(AbstractInputField<T> triggerInputField, T enabledValue,
+			AbstractInputField<?>... targetInputFields) {
 		this.triggerInputField = triggerInputField;
 		this.enabledValue = enabledValue;
 		
@@ -83,22 +83,22 @@ public class ToggleEnabledAction<T> implements FormActionModel<T> {
 	}
 
 	@Override
-	public List<AbstractInputFieldModel<?>> getTriggerInputFields() {
-		List<AbstractInputFieldModel<?>> list = new ArrayList<AbstractInputFieldModel<?>>();
+	public List<AbstractInputField<?>> getTriggerInputFields() {
+		List<AbstractInputField<?>> list = new ArrayList<AbstractInputField<?>>();
 		list.add(this.triggerInputField);
 		return list;
 	}
 
 	@Override
-	public List<AbstractFormElementModel> execute() {
-		List<AbstractFormElementModel> list = new ArrayList<AbstractFormElementModel>();
+	public List<AbstractFormElement> execute() {
+		List<AbstractFormElement> list = new ArrayList<AbstractFormElement>();
 		if (this.enabledValue.equals(this.triggerInputField.getUserInput())) {
-			for (AbstractInputFieldModel<?> targetElement : this.targetElements) {
+			for (AbstractInputField<?> targetElement : this.targetElements) {
 				targetElement.setEnabled(true);
 				list.add(targetElement);
 			}
 		} else {
-			for (AbstractInputFieldModel<?> targetElement : this.targetElements) {
+			for (AbstractInputField<?> targetElement : this.targetElements) {
 				targetElement.setEnabled(false);
 				list.add(targetElement);
 			}

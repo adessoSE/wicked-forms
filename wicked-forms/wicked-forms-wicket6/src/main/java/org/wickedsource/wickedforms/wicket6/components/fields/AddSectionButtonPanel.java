@@ -19,28 +19,28 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxSubmitLink;
 import org.apache.wicket.markup.html.form.AbstractSubmitLink;
 import org.apache.wicket.markup.html.form.Form;
-import org.wickedsource.wickedforms.model.SectionModel;
-import org.wickedsource.wickedforms.model.elements.buttons.AddSectionButtonModel;
+import org.wickedsource.wickedforms.model.Section;
+import org.wickedsource.wickedforms.model.elements.buttons.AddSectionButton;
 import org.wickedsource.wickedforms.wicket6.PanelFactory;
 
 public class AddSectionButtonPanel extends AbstractFormElementPanel {
 
 	public AddSectionButtonPanel(final String id,
-			final AddSectionButtonModel buttonModel, PanelFactory panelFactory) {
+			final AddSectionButton buttonModel, PanelFactory panelFactory) {
 		super(id, buttonModel);
 	}
 
 	@Override
 	protected void onConfigure() {
-		// The button must be added in onConfigure, because the parent FormModel
+		// The button must be added in onConfigure, because the parent Form
 		// can only be determined after this component's hierarchy has been set.
 		if (!hasBeenRendered()) {
 			AbstractSubmitLink button;
 			button = createAjaxButton("button",
-					(AddSectionButtonModel) getWickedFormModel());
+					(AddSectionButton) getWickedFormModel());
 			button.setDefaultFormProcessing(false);
 			button.add(new AttributeModifier("value",
-					((AddSectionButtonModel) getWickedFormModel()).getLabel()));
+					((AddSectionButton) getWickedFormModel()).getLabel()));
 			add(button);
 		}
 	}
@@ -49,7 +49,7 @@ public class AddSectionButtonPanel extends AbstractFormElementPanel {
 	 * Creates a button that adds the new section without AJAX.
 	 */
 	// private SubmitLink createAjaxlessButton(String wicketId, final
-	// AddSectionButtonModel buttonModel) {
+	// AddSectionButton buttonModel) {
 	// SubmitLink button = new SubmitLink(wicketId) {
 	// @Override
 	// public void onSubmit() {
@@ -63,7 +63,7 @@ public class AddSectionButtonPanel extends AbstractFormElementPanel {
 	 * Creates a button that adds the new section via AJAX.
 	 */
 	private AjaxSubmitLink createAjaxButton(String wicketId,
-			final AddSectionButtonModel buttonModel) {
+			final AddSectionButton buttonModel) {
 		AjaxSubmitLink button = new AjaxSubmitLink(wicketId) {
 			@Override
 			protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
@@ -75,12 +75,12 @@ public class AddSectionButtonPanel extends AbstractFormElementPanel {
 	}
 
 	/**
-	 * Adds the section defined by the {@link AddSectionButtonModel} to the
+	 * Adds the section defined by the {@link AddSectionButton} to the
 	 * {@link FormModel}.
 	 */
-	private void addNewSection(final AddSectionButtonModel buttonModel) {
-		SectionModel parentSection = getParentSectionModel();
-		SectionModel sectionToAdd = buttonModel.createSection();
+	private void addNewSection(final AddSectionButton buttonModel) {
+		Section parentSection = getParentSectionModel();
+		Section sectionToAdd = buttonModel.createSection();
 		if (sectionToAdd != null) {
 			parentSection.insertBefore(sectionToAdd, buttonModel);
 		}

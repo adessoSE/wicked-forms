@@ -14,7 +14,7 @@
  */
 package org.wickedsource.wickedforms.model.validation;
 
-import org.wickedsource.wickedforms.model.elements.fields.AbstractInputFieldModel;
+import org.wickedsource.wickedforms.model.elements.fields.AbstractInputField;
 
 import java.io.Serializable;
 
@@ -26,11 +26,11 @@ import java.io.Serializable;
  * @param <T>
  *          the type of the form element's value object.
  */
-public interface FieldValidatorModel<T> extends Serializable {
+public interface FieldValidator<T> extends Serializable {
 
 	/**
 	 * Implements the validation rule represented by this
-	 * {@link FieldValidatorModel}.
+	 * {@link FieldValidator}.
 	 * 
 	 * @param inputField
 	 *          the input field that is validated. Can for example be used to read
@@ -42,6 +42,6 @@ public interface FieldValidatorModel<T> extends Serializable {
 	 *          the validation fails. If the validation is successful, the method
 	 *          can simply return and leave the feedback object alone.
 	 */
-	void validate(final AbstractInputFieldModel<T> inputField, final T value, final ValidationFeedback feedback);
+	void validate(final AbstractInputField<T> inputField, final T value, final ValidationFeedback feedback);
 
 }
