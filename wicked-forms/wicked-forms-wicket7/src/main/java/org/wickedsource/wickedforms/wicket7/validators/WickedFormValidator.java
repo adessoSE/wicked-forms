@@ -19,8 +19,8 @@ import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.markup.html.form.validation.IFormValidator;
 import org.apache.wicket.util.visit.IVisit;
 import org.apache.wicket.util.visit.IVisitor;
-import org.wickedsource.wickedforms.model.elements.fields.AbstractInputFieldModel;
-import org.wickedsource.wickedforms.model.validation.FormValidatorModel;
+import org.wickedsource.wickedforms.model.elements.fields.AbstractInputField;
+import org.wickedsource.wickedforms.model.validation.FormValidator;
 import org.wickedsource.wickedforms.model.validation.ValidationFeedback;
 import org.wickedsource.wickedforms.wicket7.components.fields.AbstractFormElementPanel;
 
@@ -29,7 +29,7 @@ import java.util.List;
 
 public class WickedFormValidator implements IFormValidator {
 
-	private final FormValidatorModel validatorModel;
+	private final FormValidator validatorModel;
 
 	/**
 	 * List of the Wicket form components that are relevant for this form
@@ -39,7 +39,7 @@ public class WickedFormValidator implements IFormValidator {
 
 	private final Form<?> form;
 
-	public WickedFormValidator(FormValidatorModel validatorModel, Form<?> form) {
+	public WickedFormValidator(FormValidator validatorModel, Form<?> form) {
 		this.validatorModel = validatorModel;
 		this.form = form;
 	}
@@ -53,8 +53,8 @@ public class WickedFormValidator implements IFormValidator {
 	 * @return the input field model with the given id, or null if no input
 	 *         field model with this id is attached to this validator.
 	 */
-	private AbstractInputFieldModel getFieldModelWithId(String id) {
-		for (AbstractInputFieldModel<?> field : validatorModel.getRelevantInputFields()) {
+	private AbstractInputField getFieldModelWithId(String id) {
+		for (AbstractInputField<?> field : validatorModel.getRelevantInputFields()) {
 			if (field.getId().equals(id)) {
 				return field;
 			}
@@ -80,7 +80,7 @@ public class WickedFormValidator implements IFormValidator {
 			@Override
 			public void component(FormComponent<?> component, IVisit<Void> visit) {
 				String id = component.getMetaData(AbstractFormElementPanel.COMPONENT_ID_KEY);
-				AbstractInputFieldModel inputFieldModel = getFieldModelWithId(id);
+				AbstractInputField inputFieldModel = getFieldModelWithId(id);
 				if (inputFieldModel != null) {
 					formComponents.add(component);
 					inputFieldModel.setUserInput(component.getConvertedInput());

@@ -1,29 +1,29 @@
 package org.wickedsource.wickedforms.formelements;
 
-import org.wickedsource.wickedforms.model.FormModel;
-import org.wickedsource.wickedforms.model.SectionModel;
-import org.wickedsource.wickedforms.model.elements.TextModel;
-import org.wickedsource.wickedforms.model.elements.fields.CheckboxModel;
+import org.wickedsource.wickedforms.model.Form;
+import org.wickedsource.wickedforms.model.Section;
+import org.wickedsource.wickedforms.model.elements.Text;
+import org.wickedsource.wickedforms.model.elements.fields.Checkbox;
 
-public class CheckboxExample extends FormModel {
+public class CheckboxExample extends Form {
 
 	public CheckboxExample() {
 		super("Checkbox Examples");
 
-		add(new SectionModel("Simple Checkbox")
-		    .add(new TextModel(
+		add(new Section("Simple Checkbox")
+		    .add(new Text(
 		        "A simple checkbox. Wow!"))
-		    .add(new CheckboxModel("Subscribe Newsletter?")));
+		    .add(new Checkbox("Subscribe Newsletter?")));
 
-		add(new SectionModel("Selected Checkbox")
-		    .add(new TextModel(
+		add(new Section("Selected Checkbox")
+		    .add(new Text(
 		        "A selected checkbox."))
-		    .add(new CheckboxModel("Subscribe Newsletter?", true)));
+		    .add(new Checkbox("Subscribe Newsletter?", true)));
 
-		add(new SectionModel("Disabled Checkbox")
-		    .add(new TextModel(
+		add(new Section("Disabled Checkbox")
+		    .add(new Text(
 		        "Most form elements support the method setEnabled() to enable or disable them. "))
-		    .add(new CheckboxModel("Did you read the terms and conditions?")
+		    .add(new Checkbox("Did you read the terms and conditions?")
 		        .setEnabled(false)
 		        .setValue(true)));
 

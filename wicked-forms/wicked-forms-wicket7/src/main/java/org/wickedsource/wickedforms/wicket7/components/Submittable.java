@@ -14,10 +14,10 @@
  */
 package org.wickedsource.wickedforms.wicket7.components;
 
-import org.wickedsource.wickedforms.model.FormModel;
+import org.wickedsource.wickedforms.model.Form;
 
 public interface Submittable {
 
-	void onSubmit(final FormModel submittedData);
+	void onSubmit(final Form submittedData);
 
 }

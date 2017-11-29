@@ -26,8 +26,8 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Fragment;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
-import org.wickedsource.wickedforms.model.SectionModel;
-import org.wickedsource.wickedforms.model.elements.AbstractFormElementModel;
+import org.wickedsource.wickedforms.model.Section;
+import org.wickedsource.wickedforms.model.elements.AbstractFormElement;
 import org.wickedsource.wickedforms.wicket6.PanelFactory;
 import org.wickedsource.wickedforms.wicket6.components.LocalizedString;
 
@@ -39,11 +39,11 @@ public class SectionPanel extends AbstractFormElementPanel {
 
 	private final PanelFactory panelFactory;
 
-	private ListView<AbstractFormElementModel> listView;
+	private ListView<AbstractFormElement> listView;
 
 	private AbstractSubmitLink removeButton;
 
-	public SectionPanel(final String id, final SectionModel model, final PanelFactory panelFactory) {
+	public SectionPanel(final String id, final Section model, final PanelFactory panelFactory) {
 		super(id, model);
 		setOutputMarkupId(true);
 		setRenderBodyOnly(false);
@@ -53,7 +53,7 @@ public class SectionPanel extends AbstractFormElementPanel {
 	@Override
 	protected void onConfigure() {
 		if (!hasBeenRendered()) {
-			SectionModel model = (SectionModel) getWickedFormModel();
+			Section model = (Section) getWickedFormModel();
 			Fragment fragment;
 			if (model.isHidden()) {
 				fragment = new Fragment("sectionFragment", "hiddenSection", this);
@@ -63,7 +63,7 @@ public class SectionPanel extends AbstractFormElementPanel {
 				fragment.add(titleLabel);
 			}
 
-			ListView<AbstractFormElementModel> elementList = createElementList("elementList", model);
+			ListView<AbstractFormElement> elementList = createElementList("elementList", model);
 			fragment.add(elementList);
 			removeButton = createAjaxButton("removeButton");
 			removeButton.setDefaultFormProcessing(false);
@@ -83,7 +83,7 @@ public class SectionPanel extends AbstractFormElementPanel {
 		AjaxSubmitLink button = new AjaxSubmitLink(wicketId) {
 			@Override
 			protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
-				SectionModel sectionToRemove = (SectionModel) getWickedFormModel();
+				Section sectionToRemove = (Section) getWickedFormModel();
 				sectionToRemove.discard();
 				SectionPanel.this.setVisible(false);
 				target.add(getParentSectionPanel());
@@ -96,7 +96,7 @@ public class SectionPanel extends AbstractFormElementPanel {
 	// SubmitLink button = new SubmitLink(wicketId) {
 	// @Override
 	// public void onSubmit() {
-	// SectionModel sectionToRemove = (SectionModel) getWickedFormModel();
+	// Section sectionToRemove = (Section) getWickedFormModel();
 	// sectionToRemove.discard();
 	// SectionPanel.this.setVisible(false);
 	// }
@@ -108,22 +108,22 @@ public class SectionPanel extends AbstractFormElementPanel {
 /**
 	 * Creates the {@link ListView} that contains the section's form elements.
 	 * <p/>
-	 * The created {@link ListView} will render it's items sorted by {@link AbstractFormElementModel#getIndex().
+	 * The created {@link ListView} will render it's items sorted by {@link AbstractFormElement#getIndex().
 	 * 
 	 * @param wicketId the wicket id of the ListView
 	 * @param section the model of the section for which to create the {@link ListView}
 	 * @return a sorted ListView of the sections elements.
 	 */
-	private ListView<AbstractFormElementModel> createElementList(final String wicketId,
-			final SectionModel section) {
+	private ListView<AbstractFormElement> createElementList(final String wicketId,
+			final Section section) {
 
-		IModel<List<AbstractFormElementModel>> model = new PropertyModel<List<AbstractFormElementModel>>(section,
+		IModel<List<AbstractFormElement>> model = new PropertyModel<List<AbstractFormElement>>(section,
 				"formElements");
 
-		listView = new ListView<AbstractFormElementModel>(wicketId, model) {
+		listView = new ListView<AbstractFormElement>(wicketId, model) {
 			@Override
-			protected void populateItem(final ListItem<AbstractFormElementModel> item) {
-				AbstractFormElementModel element = item.getModelObject();
+			protected void populateItem(final ListItem<AbstractFormElement> item) {
+				AbstractFormElement element = item.getModelObject();
 				item.add(createFormElementPanel("elementPanel", element));
 				item.setRenderBodyOnly(true);
 			}
@@ -134,10 +134,10 @@ public class SectionPanel extends AbstractFormElementPanel {
 					@Override
 					@SuppressWarnings("unchecked")
 					public int compare(Component o1, Component o2) {
-						ListItem<AbstractFormElementModel> item1 = (ListItem<AbstractFormElementModel>) o1;
-						AbstractFormElementModel model1 = item1.getModelObject();
-						ListItem<AbstractFormElementModel> item2 = (ListItem<AbstractFormElementModel>) o2;
-						AbstractFormElementModel model2 = item2.getModelObject();
+						ListItem<AbstractFormElement> item1 = (ListItem<AbstractFormElement>) o1;
+						AbstractFormElement model1 = item1.getModelObject();
+						ListItem<AbstractFormElement> item2 = (ListItem<AbstractFormElement>) o2;
+						AbstractFormElement model2 = item2.getModelObject();
 						return model1.getIndex().compareTo(model2.getIndex());
 					}
 				});
@@ -147,12 +147,12 @@ public class SectionPanel extends AbstractFormElementPanel {
 		return listView;
 	}
 
-	private <T> Component createFormElementPanel(final String wicketId, final AbstractFormElementModel element) {
+	private <T> Component createFormElementPanel(final String wicketId, final AbstractFormElement element) {
 		return panelFactory.createFormElementPanel(wicketId, element);
 
 	}
 
-	public ListView<AbstractFormElementModel> getListView() {
+	public ListView<AbstractFormElement> getListView() {
 		return listView;
 	}
 

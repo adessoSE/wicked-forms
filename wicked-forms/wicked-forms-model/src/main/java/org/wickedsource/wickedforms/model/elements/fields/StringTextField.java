@@ -12,19 +12,31 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package org.wickedsource.wickedforms.model.validation;
+package org.wickedsource.wickedforms.model.elements.fields;
 
-import org.wickedsource.wickedforms.model.elements.fields.AbstractInputFieldModel;
+import org.wickedsource.wickedforms.model.binding.Binding;
 
-public class UrlValidatorModel implements FieldValidatorModel<String> {
+public class StringTextField extends TextField<String> {
+
+	public StringTextField() {
+		super(String.class);
+	}
+
+	public StringTextField(final String label) {
+		super(label, String.class);
+	}
+
+	public StringTextField(final String label, final Binding<String> binding) {
+		super(label, binding, String.class);
+	}
+
+	public StringTextField(final String label, final String value) {
+		super(label, value, String.class);
+	}
 
 	@Override
-	public void validate(final AbstractInputFieldModel<String> inputField, final String value,
-	    final ValidationFeedback feedback) {
-		if (!value
-		    .matches("(http|ftp|https):\\/\\/[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&amp;:/~\\+#]*[\\w\\-\\@?^=%&amp;/~\\+#])?")) {
-			feedback.error(String.format("The value for '%s' is not a valid URL!", inputField.getLabel()));
-		}
-
+	public Class<String> getModelClass() {
+		return String.class;
 	}
+
 }

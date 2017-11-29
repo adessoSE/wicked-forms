@@ -15,8 +15,8 @@
 package org.wickedsource.wickedforms.model.elements.buttons;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
-import org.wickedsource.wickedforms.model.SectionModel;
-import org.wickedsource.wickedforms.model.elements.AbstractFormElementModel;
+import org.wickedsource.wickedforms.model.Section;
+import org.wickedsource.wickedforms.model.elements.AbstractFormElement;
 
 /**
  * Use this model to add a button to a form that allows to add a new section to
@@ -25,11 +25,11 @@ import org.wickedsource.wickedforms.model.elements.AbstractFormElementModel;
  * @author Tom Hombergs (tom.hombergs@gmail.com)
  * 
  */
-public abstract class AddSectionButtonModel extends AbstractFormElementModel {
+public abstract class AddSectionButton extends AbstractFormElement {
 
 	private String label;
 
-	public AddSectionButtonModel(String label) {
+	public AddSectionButton(String label) {
 		this.label = label;
 	}
 
@@ -49,7 +49,7 @@ public abstract class AddSectionButtonModel extends AbstractFormElementModel {
 	 * @return the section to be added to the form. May be null if no section is
 	 *         to be added.
 	 */
-	public abstract SectionModel createSection();
+	public abstract Section createSection();
 
 	@Override
 	public String toString() {

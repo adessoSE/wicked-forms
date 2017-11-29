@@ -25,7 +25,7 @@ import org.wickedsource.wickedforms.model.binding.SimpleBinding;
  * @param <T>
  *          the type the value of this field binds to.
  */
-public class AbstractBoundFieldModel<T> extends AbstractFormElementModel {
+public class AbstractBoundField<T> extends AbstractFormElement {
 
 	private Binding<T> binding;
 
@@ -33,18 +33,18 @@ public class AbstractBoundFieldModel<T> extends AbstractFormElementModel {
 	 * Default constructor. No backing value is initialized, so that the form
 	 * element is empty (null).
 	 */
-	public AbstractBoundFieldModel() {
+	public AbstractBoundField() {
 		this.setBinding(new SimpleBinding<T>(null));
 	}
 
 	/**
 	 * Constructor with initial value. If you wish to bind the value of the form
-	 * element to another object, use {@link FormElement(Binding)} instead.
+	 * element to another object, use {@link #AbstractBoundField(Binding)} instead.
 	 * 
 	 * @param value
 	 *          the value to be displayed by the form element.
 	 */
-	public AbstractBoundFieldModel(final T value) {
+	public AbstractBoundField(final T value) {
 		this.setBinding(new SimpleBinding<T>(value));
 	}
 
@@ -58,7 +58,7 @@ public class AbstractBoundFieldModel<T> extends AbstractFormElementModel {
 	 *          the binding defining the link between this form element and
 	 *          another object that serves as backing object to this form element.
 	 */
-	public AbstractBoundFieldModel(final Binding<T> binding) {
+	public AbstractBoundField(final Binding<T> binding) {
 		this.setBinding(binding);
 	}
 
@@ -80,7 +80,7 @@ public class AbstractBoundFieldModel<T> extends AbstractFormElementModel {
 	 *          the new value.
 	 * @return this object for chaining
 	 */
-	public AbstractBoundFieldModel<T> setValue(final T value) {
+	public AbstractBoundField<T> setValue(final T value) {
 		getBinding().setValue(value);
 		return this;
 	}
@@ -89,7 +89,7 @@ public class AbstractBoundFieldModel<T> extends AbstractFormElementModel {
 		return this.binding;
 	}
 
-	public AbstractBoundFieldModel<T> setBinding(final Binding<T> binding) {
+	public AbstractBoundField<T> setBinding(final Binding<T> binding) {
 		this.binding = binding;
 		return this;
 	}

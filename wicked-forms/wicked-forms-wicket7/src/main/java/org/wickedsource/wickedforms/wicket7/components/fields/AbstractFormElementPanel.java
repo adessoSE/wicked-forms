@@ -18,9 +18,9 @@ import org.apache.wicket.Component;
 import org.apache.wicket.MetaDataKey;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.Panel;
-import org.wickedsource.wickedforms.model.FormModel;
-import org.wickedsource.wickedforms.model.SectionModel;
-import org.wickedsource.wickedforms.model.elements.AbstractFormElementModel;
+import org.wickedsource.wickedforms.model.Form;
+import org.wickedsource.wickedforms.model.Section;
+import org.wickedsource.wickedforms.model.elements.AbstractFormElement;
 import org.wickedsource.wickedforms.wicket7.components.FormPanel;
 
 /**
@@ -32,13 +32,13 @@ import org.wickedsource.wickedforms.wicket7.components.FormPanel;
 public abstract class AbstractFormElementPanel extends Panel {
 
 	/**
-	 * Key for storing the ID of an {@link AbstractFormElementModel} in a Wicket
+	 * Key for storing the ID of an {@link AbstractFormElement} in a Wicket
 	 * component.
 	 */
 	public static final MetaDataKey<String> COMPONENT_ID_KEY = new MetaDataKey<String>() {
 	};
 
-	private final AbstractFormElementModel model;
+	private final AbstractFormElement model;
 
 	/**
 	 * Constructor.
@@ -49,7 +49,7 @@ public abstract class AbstractFormElementPanel extends Panel {
 	 *            the Wicked Charts model object that is displayed by this
 	 *            panel.
 	 */
-	public AbstractFormElementPanel(String id, AbstractFormElementModel model) {
+	public AbstractFormElementPanel(String id, AbstractFormElement model) {
 		super(id);
 		this.model = model;
 		setRenderBodyOnly(true);
@@ -69,11 +69,11 @@ public abstract class AbstractFormElementPanel extends Panel {
 		component.setMetaData(COMPONENT_ID_KEY, model.getId());
 	}
 
-	protected AbstractFormElementModel getWickedFormModel() {
+	protected AbstractFormElement getWickedFormModel() {
 		return model;
 	}
 
-	public FormModel getParentFormModel() {
+	public Form getParentFormModel() {
 		FormPanel parentFormPanel = getParentFormPanel();
 		if (parentFormPanel == null) {
 			throw new IllegalStateException("no FormPanel could be found in the parent hierarchy");
@@ -93,12 +93,12 @@ public abstract class AbstractFormElementPanel extends Panel {
 		return null;
 	}
 
-	public SectionModel getParentSectionModel() {
+	public Section getParentSectionModel() {
 		SectionPanel parentSectionPanel = getParentSectionPanel();
 		if (parentSectionPanel == null) {
 			throw new IllegalStateException("no SectionPanel could be found in the parent hierarchy");
 		} else {
-			return (SectionModel) parentSectionPanel.getWickedFormModel();
+			return (Section) parentSectionPanel.getWickedFormModel();
 		}
 	}
 

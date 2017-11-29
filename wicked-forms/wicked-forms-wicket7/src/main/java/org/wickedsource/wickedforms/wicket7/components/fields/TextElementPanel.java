@@ -15,10 +15,10 @@
 package org.wickedsource.wickedforms.wicket7.components.fields;
 
 import org.apache.wicket.markup.html.basic.Label;
-import org.wickedsource.wickedforms.model.elements.TextModel;
+import org.wickedsource.wickedforms.model.elements.Text;
 
 /**
- * A panel that represents a {@link TextModel} in a form.
+ * A panel that represents a {@link Text} in a form.
  * <p/>
  * <strong>Wicket IDs needed in the markup:</strong>
  * <ul>
@@ -30,7 +30,7 @@ import org.wickedsource.wickedforms.model.elements.TextModel;
  */
 public class TextElementPanel extends AbstractFormElementPanel {
 
-	public TextElementPanel(String id, TextModel model) {
+	public TextElementPanel(String id, Text model) {
 		super(id, model);
 		Label label = new Label("text", model.getValue());
 		add(label);

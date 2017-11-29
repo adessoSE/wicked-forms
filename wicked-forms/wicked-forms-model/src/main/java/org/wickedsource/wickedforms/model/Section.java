@@ -16,7 +16,7 @@ package org.wickedsource.wickedforms.model;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
-import org.wickedsource.wickedforms.model.elements.AbstractFormElementModel;
+import org.wickedsource.wickedforms.model.elements.AbstractFormElement;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,11 +32,11 @@ import java.util.List;
  * @author Tom Hombergs (tom.hombergs@gmail.com)
  * 
  */
-public class SectionModel extends AbstractFormElementModel {
+public class Section extends AbstractFormElement {
 
 	private String label;
 
-	private final List<AbstractFormElementModel> formElements = new ArrayList<AbstractFormElementModel>();
+	private final List<AbstractFormElement> formElements = new ArrayList<AbstractFormElement>();
 
 	private boolean hidden = false;
 
@@ -49,7 +49,7 @@ public class SectionModel extends AbstractFormElementModel {
 	 *            the title of the form. This title should be displayed
 	 *            prominently by a Wicked Forms interpreter.
 	 */
-	public SectionModel(final String label) {
+	public Section(final String label) {
 		this.label = label;
 	}
 
@@ -57,7 +57,7 @@ public class SectionModel extends AbstractFormElementModel {
 	 * Constructs a hidden section (i.e. without title and without visual
 	 * border.
 	 */
-	public SectionModel() {
+	public Section() {
 		this.hidden = true;
 	}
 
@@ -68,7 +68,7 @@ public class SectionModel extends AbstractFormElementModel {
 	 *            the new title.
 	 * @return this object for chaining
 	 */
-	public SectionModel setLabel(final String label) {
+	public Section setLabel(final String label) {
 		this.label = label;
 		return this;
 	}
@@ -84,18 +84,18 @@ public class SectionModel extends AbstractFormElementModel {
 	 *            the element to add.
 	 * @return this object for chaining
 	 */
-	public SectionModel add(final AbstractFormElementModel element) {
+	public Section add(final AbstractFormElement element) {
 		element.setIndex(this.formElements.size());
 		element.setParentSection(this);
 		this.formElements.add(element);
 		return this;
 	}
 
-	public SectionModel remove(final AbstractFormElementModel elementToRemove) {
+	public Section remove(final AbstractFormElement elementToRemove) {
 		if (this.formElements.remove(elementToRemove)) {
 			elementToRemove.setParentSection(null);
 			// shift the index of all form elements behind the new one by one
-			for (AbstractFormElementModel element : this.formElements) {
+			for (AbstractFormElement element : this.formElements) {
 				if (element.getIndex() > elementToRemove.getIndex()) {
 					element.setIndex(element.getIndex() - 1);
 				}
@@ -109,7 +109,7 @@ public class SectionModel extends AbstractFormElementModel {
 	 * <p/>
 	 * Internal note: the element is actually added into the formElements list
 	 * as the last item! The newly added form element and all elements behind it
-	 * will merely have {@link AbstractFormElementModel#setIndex(Integer)}
+	 * will merely have {@link AbstractFormElement#setIndex(Integer)}
 	 * called with the according index. This is due to the fact that frameworks
 	 * working on the formElements List may access the elements by List index
 	 * and may thus be unable to work with elements shifting within the List.
@@ -123,8 +123,8 @@ public class SectionModel extends AbstractFormElementModel {
 	 *             section.
 	 * @return this object for chaining
 	 */
-	public SectionModel insertBefore(final AbstractFormElementModel newElement,
-			final AbstractFormElementModel beforeThis) {
+	public Section insertBefore(final AbstractFormElement newElement,
+			final AbstractFormElement beforeThis) {
 		int index = beforeThis.getIndex();
 		if (index == -1) {
 			throw new IllegalArgumentException(
@@ -132,7 +132,7 @@ public class SectionModel extends AbstractFormElementModel {
 		}
 
 		// shift the index of all form elements behind the new one by one
-		for (AbstractFormElementModel element : this.formElements) {
+		for (AbstractFormElement element : this.formElements) {
 			if (element.getIndex() >= index) {
 				element.setIndex(element.getIndex() + 1);
 			}
@@ -149,15 +149,15 @@ public class SectionModel extends AbstractFormElementModel {
 	 * <p/>
 	 * Note that the returned list is not necessarily sorted by the index of the
 	 * contained form elements! To have them sorted, use a comparator that sorts
-	 * by {@link AbstractFormElementModel#getIndex()}.
+	 * by {@link AbstractFormElement#getIndex()}.
 	 * 
 	 * @return the form elements.
 	 */
-	public List<AbstractFormElementModel> getFormElements() {
+	public List<AbstractFormElement> getFormElements() {
 		return Collections.unmodifiableList(this.formElements);
 	}
 
-	public SectionModel setHidden(final boolean hidden) {
+	public Section setHidden(final boolean hidden) {
 		this.hidden = hidden;
 		return this;
 	}
@@ -176,9 +176,9 @@ public class SectionModel extends AbstractFormElementModel {
 	 */
 	protected int assignIds(int startValue) {
 		setId("" + startValue++);
-		for (AbstractFormElementModel formElement : this.getFormElements()) {
-			if (formElement instanceof SectionModel) {
-				startValue = ((SectionModel) formElement).assignIds(startValue++);
+		for (AbstractFormElement formElement : this.getFormElements()) {
+			if (formElement instanceof Section) {
+				startValue = ((Section) formElement).assignIds(startValue++);
 			} else if (formElement.getId() == null
 					|| "".equals(formElement.getId())) {
 				formElement.setId("" + startValue++);
@@ -198,7 +198,7 @@ public class SectionModel extends AbstractFormElementModel {
 	 * 
 	 * @return this object for chaining
 	 */
-	public SectionModel setShowRemoveButton(boolean showRemoveButton) {
+	public Section setShowRemoveButton(boolean showRemoveButton) {
 		this.showRemoveButton = showRemoveButton;
 		return this;
 	}
@@ -219,15 +219,15 @@ public class SectionModel extends AbstractFormElementModel {
 	 *            like the given id in the XML-form
 	 * @return returns the formelement representing with the given id
 	 */
-	public AbstractFormElementModel getElementById(String id) {
+	public AbstractFormElement getElementById(String id) {
 
-		AbstractFormElementModel element = null;
+		AbstractFormElement element = null;
 
 		// this element is the searched one
 		if (getId().equals(id)) {
 			return this;
 		} else {
-			for (AbstractFormElementModel formElement : formElements) {
+			for (AbstractFormElement formElement : formElements) {
 
 				// the child element is the searched one
 				if (formElement.getId().equals(id)) {
@@ -235,8 +235,8 @@ public class SectionModel extends AbstractFormElementModel {
 				}
 
 				// search in child-elements
-				if (formElement instanceof SectionModel) {
-					element = ((SectionModel) formElement).getElementById(id);
+				if (formElement instanceof Section) {
+					element = ((Section) formElement).getElementById(id);
 					if (element != null)
 						return element;
 				}

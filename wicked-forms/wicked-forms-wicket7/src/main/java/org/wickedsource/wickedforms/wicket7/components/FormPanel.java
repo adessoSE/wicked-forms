@@ -22,7 +22,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.resource.PackageResourceReference;
-import org.wickedsource.wickedforms.model.FormModel;
+import org.wickedsource.wickedforms.model.Form;
 import org.wickedsource.wickedforms.wicket7.DefaultPanelFactory;
 import org.wickedsource.wickedforms.wicket7.PanelFactory;
 
@@ -41,7 +41,7 @@ public abstract class FormPanel extends Panel implements Submittable {
 	 * @param model
 	 *            the form model that describes the contents of the form.
 	 */
-	public FormPanel(final String id, final IModel<FormModel> model) {
+	public FormPanel(final String id, final IModel<Form> model) {
 		super(id, model);
 		model.getObject().assignIds();
 		this.panelFactory = new DefaultPanelFactory();
@@ -50,11 +50,11 @@ public abstract class FormPanel extends Panel implements Submittable {
 	}
 
 	@SuppressWarnings("unchecked")
-	public FormPanel(final String id, final FormModel formModel) {
+	public FormPanel(final String id, final Form formModel) {
 		super(id, Model.of(formModel));
 		formModel.assignIds();
 		this.panelFactory = new DefaultPanelFactory();
-		add(new DynamicForm("form", (IModel<FormModel>) getDefaultModel(), panelFactory, this));
+		add(new DynamicForm("form", (IModel<Form>) getDefaultModel(), panelFactory, this));
 		mountResources();
 	}
 
@@ -73,7 +73,7 @@ public abstract class FormPanel extends Panel implements Submittable {
 	 *            the factory to use for creating the sub panels that each
 	 *            contain a form element (text field, checkbox, ...).
 	 */
-	public FormPanel(final String id, final IModel<FormModel> model,
+	public FormPanel(final String id, final IModel<Form> model,
 			final PanelFactory panelFactory) {
 		super(id, model);
 		model.getObject().assignIds();
@@ -112,9 +112,9 @@ public abstract class FormPanel extends Panel implements Submittable {
 	 * Executed when the form is submitted.
 	 * 
 	 * @param submittedData
-	 *            the {@link FormModel} object containing the state of the form
+	 *            the {@link Form} object containing the state of the form
 	 *            at submit time. If you have used Bindings and implemented
-	 *            {@link AbstractFormElementModel#onDiscard} to clean up after
+	 *            {@link AbstractFormElement#onDiscard} to clean up after
 	 *            discarded elements, the user input will be bound to the target
 	 *            objects by now and you will not actually need to evaluate this
 	 *            parameter.
@@ -122,11 +122,11 @@ public abstract class FormPanel extends Panel implements Submittable {
 	 *            If you need to evaluate this parameter, be aware that elements
 	 *            that were marked as "discarded" while the user worked with the
 	 *            form, are still contained. Call
-	 *            {@link AbstractFormElementModel#isDiscarded()} on each element
+	 *            {@link AbstractFormElement#isDiscarded()} on each element
 	 *            before evaluating it.
 	 */
 	@Override
-	public abstract void onSubmit(final FormModel submittedData);
+	public abstract void onSubmit(final Form submittedData);
 
 	@Override
 	public void renderHead(final IHeaderResponse response) {
@@ -135,8 +135,8 @@ public abstract class FormPanel extends Panel implements Submittable {
 		}
 	}
 
-	public FormModel getWickedFormModel() {
-		return (FormModel) getDefaultModelObject();
+	public Form getWickedFormModel() {
+		return (Form) getDefaultModelObject();
 	}
 
 }

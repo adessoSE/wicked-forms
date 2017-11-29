@@ -28,14 +28,14 @@ import java.util.List;
  * @param <T>
  *          the type of an item that can be selected by the user.
  */
-public abstract class AbstractMultiChoiceModel<T> extends
-    AbstractInputFieldModel<List<T>> {
+public abstract class AbstractMultiChoice<T> extends
+    AbstractInputField<List<T>> {
 
 	protected final List<T> choices;
 
 	private final ChoiceLabeller<T> choiceLabeller;
 
-	public AbstractMultiChoiceModel(final String label, final List<T> choices) {
+	public AbstractMultiChoice(final String label, final List<T> choices) {
 		super(label);
 		this.choices = choices;
 		this.choiceLabeller = new ToStringChoiceLabeller<T>();
@@ -50,7 +50,7 @@ public abstract class AbstractMultiChoiceModel<T> extends
 	 *          the list of choices that are displayed to the user and of which
 	 *          the user may select one or more.
 	 */
-	public AbstractMultiChoiceModel(final String label, final List<T> choices, final ChoiceLabeller<T> choiceLabeller) {
+	public AbstractMultiChoice(final String label, final List<T> choices, final ChoiceLabeller<T> choiceLabeller) {
 		super(label);
 		this.choices = choices;
 		this.choiceLabeller = choiceLabeller;
@@ -67,7 +67,7 @@ public abstract class AbstractMultiChoiceModel<T> extends
 	 * @param value
 	 *          the list of items that are initially selected.
 	 */
-	public AbstractMultiChoiceModel(final String label, final List<T> choices, final ChoiceLabeller<T> choiceLabeller,
+	public AbstractMultiChoice(final String label, final List<T> choices, final ChoiceLabeller<T> choiceLabeller,
 	    final List<T> value) {
 		super(label, value);
 		this.choices = choices;
@@ -85,14 +85,14 @@ public abstract class AbstractMultiChoiceModel<T> extends
 	 * @param binding
 	 *          the binding between this input field and an arbitrary object.
 	 */
-	public AbstractMultiChoiceModel(final String label, final List<T> choices, final ChoiceLabeller<T> choiceLabeller,
+	public AbstractMultiChoice(final String label, final List<T> choices, final ChoiceLabeller<T> choiceLabeller,
 	    final Binding<List<T>> binding) {
 		super(label, binding);
 		this.choices = choices;
 		this.choiceLabeller = choiceLabeller;
 	}
 
-	public AbstractMultiChoiceModel(final List<T> choices, final ChoiceLabeller<T> choiceLabeller) {
+	public AbstractMultiChoice(final List<T> choices, final ChoiceLabeller<T> choiceLabeller) {
 		this.choices = choices;
 		this.choiceLabeller = choiceLabeller;
 	}

@@ -14,10 +14,10 @@
  */
 package org.wickedsource.wickedforms.model.elements.fields;
 
-import org.wickedsource.wickedforms.model.actions.FormActionModel;
+import org.wickedsource.wickedforms.model.actions.FormAction;
 import org.wickedsource.wickedforms.model.binding.Binding;
-import org.wickedsource.wickedforms.model.elements.AbstractBoundFieldModel;
-import org.wickedsource.wickedforms.model.validation.FieldValidatorModel;
+import org.wickedsource.wickedforms.model.elements.AbstractBoundField;
+import org.wickedsource.wickedforms.model.validation.FieldValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +32,8 @@ import java.util.List;
  * @param <T>
  *            the type of the user input
  */
-public abstract class AbstractInputFieldModel<T> extends
-        AbstractBoundFieldModel<T> {
+public abstract class AbstractInputField<T> extends
+		AbstractBoundField<T> {
 
 	private String label;
 
@@ -45,9 +45,9 @@ public abstract class AbstractInputFieldModel<T> extends
 
 	private String requiredMessage;
 
-	private final List<FieldValidatorModel<T>> validators = new ArrayList<FieldValidatorModel<T>>();
+	private final List<FieldValidator<T>> validators = new ArrayList<FieldValidator<T>>();
 
-	private final List<FormActionModel<T>> actions = new ArrayList<FormActionModel<T>>();
+	private final List<FormAction<T>> actions = new ArrayList<FormAction<T>>();
 
 	private T userInput;
 
@@ -59,22 +59,21 @@ public abstract class AbstractInputFieldModel<T> extends
 	 *            next to the input field itself, so that it is clear what input
 	 *            the user is expected to give.
 	 */
-	public AbstractInputFieldModel(final String label) {
+	public AbstractInputField(final String label) {
 		this.label = label;
 	}
 
 	/**
 	 * Constructor with initial value.
 	 * 
-	 * @param the
-	 *            label of the input field. This label should be displayed next
+	 * @param label
+	 *            the label of the input field. This label should be displayed next
 	 *            to the input field itself, so that it is clear what input the
 	 *            user is expected to give.
 	 * @param value
 	 *            the initial value of the input field.
-	 * @see AbstractFormElementModel#FormElement(Object)
 	 */
-	public AbstractInputFieldModel(final String label, final T value) {
+	public AbstractInputField(final String label, final T value) {
 		super(value);
 		this.label = label;
 	}
@@ -89,18 +88,17 @@ public abstract class AbstractInputFieldModel<T> extends
 	 * @param binding
 	 *            a binding defining a link between this input field and an
 	 *            arbitrary object.
-	 * @see AbstractFormElementModel#FormElement(Binding)
 	 */
-	public AbstractInputFieldModel(final String label, final Binding<T> binding) {
+	public AbstractInputField(final String label, final Binding<T> binding) {
 		super(binding);
 		this.label = label;
 	}
 
-	public AbstractInputFieldModel() {
+	public AbstractInputField() {
 
 	}
 
-	public AbstractInputFieldModel<T> setLabel(final String label) {
+	public AbstractInputField<T> setLabel(final String label) {
 		this.label = label;
 		return this;
 	}
@@ -117,12 +115,12 @@ public abstract class AbstractInputFieldModel<T> extends
 	 *            the validator to add.
 	 * @return this object for chaining
 	 */
-	public AbstractInputFieldModel<T> add(final FieldValidatorModel<T> validator) {
+	public AbstractInputField<T> add(final FieldValidator<T> validator) {
 		this.getValidators().add(validator);
 		return this;
 	}
 
-	public AbstractInputFieldModel<T> add(final FormActionModel<T> action) {
+	public AbstractInputField<T> add(final FormAction<T> action) {
 		this.getActions().add(action);
 		return this;
 	}
@@ -136,7 +134,7 @@ public abstract class AbstractInputFieldModel<T> extends
 	 *            the hint of the input field.
 	 * @return this object for chaining
 	 */
-	public AbstractInputFieldModel<T> setHint(final String hint) {
+	public AbstractInputField<T> setHint(final String hint) {
 		this.hint = hint;
 		return this;
 	}
@@ -154,7 +152,7 @@ public abstract class AbstractInputFieldModel<T> extends
 	 *            submitted without filling this input field.
 	 * @return this object for chaining
 	 */
-	public AbstractInputFieldModel<T> setRequired(final boolean required) {
+	public AbstractInputField<T> setRequired(final boolean required) {
 		this.required = required;
 		return this;
 	}
@@ -172,7 +170,7 @@ public abstract class AbstractInputFieldModel<T> extends
 	 *            field.
 	 * @return this object for chaining
 	 */
-	public AbstractInputFieldModel<T> setRequiredMessage(final String requiredMessage) {
+	public AbstractInputField<T> setRequiredMessage(final String requiredMessage) {
 		this.requiredMessage = requiredMessage;
 		return this;
 	}
@@ -181,7 +179,7 @@ public abstract class AbstractInputFieldModel<T> extends
 		return this.requiredMessage;
 	}
 
-	public List<FieldValidatorModel<T>> getValidators() {
+	public List<FieldValidator<T>> getValidators() {
 		return this.validators;
 	}
 
@@ -225,7 +223,7 @@ public abstract class AbstractInputFieldModel<T> extends
 	 *            true to enable, false to disable.
 	 * @return this object for chaining
 	 */
-	public AbstractInputFieldModel<T> setEnabled(final boolean enabled) {
+	public AbstractInputField<T> setEnabled(final boolean enabled) {
 		this.enabled = enabled;
 		return this;
 	}
@@ -234,7 +232,7 @@ public abstract class AbstractInputFieldModel<T> extends
 		return this.enabled;
 	}
 
-	public List<FormActionModel<T>> getActions() {
+	public List<FormAction<T>> getActions() {
 		return this.actions;
 	}
 

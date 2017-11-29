@@ -17,11 +17,11 @@ package org.wickedsource.wickedforms.wicket6.components.fields;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.RadioChoice;
 import org.apache.wicket.model.PropertyModel;
-import org.wickedsource.wickedforms.model.elements.fields.RadioGroupModel;
+import org.wickedsource.wickedforms.model.elements.fields.RadioGroup;
 import org.wickedsource.wickedforms.wicket6.components.WickedFormsChoiceRenderer;
 
 /**
- * A panel that represents a {@link RadioGroupModel} in a form.
+ * A panel that represents a {@link RadioGroup} in a form.
  * <p/>
  * <strong>Wicket IDs needed in the markup:</strong>
  * <ul>
@@ -38,7 +38,7 @@ public class RadioGroupPanel<T> extends AbstractInputFieldPanel<T> {
 
 	private final RadioChoice<T> radio;
 
-	public RadioGroupPanel(final String id, final RadioGroupModel<T> model) {
+	public RadioGroupPanel(final String id, final RadioGroup<T> model) {
 		super(id, model);
 
 		this.radio = new RadioChoice<T>("inputField", new PropertyModel<T>(model, "value"),

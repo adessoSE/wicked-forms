@@ -25,21 +25,18 @@ import org.wickedsource.wickedforms.model.binding.Binding;
  * @param <T>
  *            the type of object the text field binds to.
  */
-public class TextFieldModel<T> extends AbstractInputFieldModel<T> {
+public class TextField<T> extends AbstractInputField<T> {
 
 	private String placeholder;
 
 	private final Class<T> modelClass;
 
-	public TextFieldModel(final Class<T> modelClass) {
+	public TextField(final Class<T> modelClass) {
 		super();
 		this.modelClass = modelClass;
 	}
 
-	/**
-	 * @see AbstractInputFieldModel#InputField(String, Binding)
-	 */
-	public TextFieldModel(final String label, final Binding<T> binding, final Class<T> modelClass) {
+	public TextField(final String label, final Binding<T> binding, final Class<T> modelClass) {
 		super(label, binding);
 		this.modelClass = modelClass;
 	}
@@ -47,17 +44,13 @@ public class TextFieldModel<T> extends AbstractInputFieldModel<T> {
 	/**
 	 * @param modelClass
 	 *            the class of the object this text field takes as input
-	 * @see AbstractInputFieldModel#InputField(String)
 	 */
-	public TextFieldModel(final String label, final Class<T> modelClass) {
+	public TextField(final String label, final Class<T> modelClass) {
 		super(label);
 		this.modelClass = modelClass;
 	}
 
-	/**
-	 * @see AbstractInputFieldModel#InputField(String, Boolean)
-	 */
-	public TextFieldModel(final String label, final T value, final Class<T> modelClass) {
+	public TextField(final String label, final T value, final Class<T> modelClass) {
 		super(label, value);
 		this.modelClass = modelClass;
 	}

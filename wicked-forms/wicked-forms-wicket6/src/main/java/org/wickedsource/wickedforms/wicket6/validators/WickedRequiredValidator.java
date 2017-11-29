@@ -17,15 +17,15 @@ package org.wickedsource.wickedforms.wicket6.validators;
 import org.apache.wicket.validation.INullAcceptingValidator;
 import org.apache.wicket.validation.IValidatable;
 import org.apache.wicket.validation.ValidationError;
-import org.wickedsource.wickedforms.model.elements.fields.AbstractInputFieldModel;
+import org.wickedsource.wickedforms.model.elements.fields.AbstractInputField;
 
 import java.text.MessageFormat;
 
 public class WickedRequiredValidator<T> implements INullAcceptingValidator<T> {
 
-	private final AbstractInputFieldModel<T> field;
+	private final AbstractInputField<T> field;
 
-	public WickedRequiredValidator(AbstractInputFieldModel<T> field) {
+	public WickedRequiredValidator(AbstractInputField<T> field) {
 		this.field = field;
 	}
 

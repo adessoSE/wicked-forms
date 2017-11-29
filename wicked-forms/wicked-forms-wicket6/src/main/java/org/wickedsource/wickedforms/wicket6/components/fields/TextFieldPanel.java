@@ -16,21 +16,20 @@ package org.wickedsource.wickedforms.wicket6.components.fields;
 
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.PropertyModel;
-import org.wickedsource.wickedforms.model.elements.fields.TextFieldModel;
+import org.wickedsource.wickedforms.model.elements.fields.TextField;
 import org.wickedsource.wickedforms.wicket6.components.PatternAttributeModifier;
 
 import java.math.BigDecimal;
 
 /**
- * A panel that represents a {@link TextFieldModel} in a form.
+ * A panel that represents a {@link TextField} in a form.
  * <p/>
  * <strong>Wicket IDs needed in the markup:</strong>
  * <ul>
  * <li><strong>label</strong>: a {@link Label} that displays the label of the
  * text field.
- * <li><strong>inputField</strong>: a {@link TextField} that takes the user's
+ * <li><strong>inputField</strong>: a {@link org.apache.wicket.markup.html.form.TextField} that takes the user's
  * input.
  * </ul>
  * 
@@ -43,12 +42,12 @@ public class TextFieldPanel<T> extends AbstractInputFieldPanel<T> {
 
 	private static final String INTEGER_PATTERN = "-?[0-9]+";
 
-	private final TextField<T> textField;
+	private final org.apache.wicket.markup.html.form.TextField textField;
 
-	public TextFieldPanel(final String id, final TextFieldModel<T> model, final Class<T> modelClass) {
+	public TextFieldPanel(final String id, final TextField<T> model, final Class<T> modelClass) {
 		super(id, model);
 
-		this.textField = new TextField<T>("inputField", new PropertyModel<T>(model, "value"), modelClass);
+		this.textField = new org.apache.wicket.markup.html.form.TextField("inputField", new PropertyModel<T>(model, "value"), modelClass);
 		this.decorateComponent(this.textField);
 
 		if (model.getPlaceHolder() != null && !"".equals(model.getPlaceHolder())) {

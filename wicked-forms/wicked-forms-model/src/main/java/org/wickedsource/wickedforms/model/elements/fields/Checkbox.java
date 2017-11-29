@@ -16,27 +16,33 @@ package org.wickedsource.wickedforms.model.elements.fields;
 
 import org.wickedsource.wickedforms.model.binding.Binding;
 
-public class StringTextFieldModel extends TextFieldModel<String> {
+/**
+ * A checkbox that can be marked or not and thus is bound to a boolean value.
+ * 
+ * @author Tom Hombergs (tom.hombergs@gmail.com)
+ * 
+ */
+public class Checkbox extends AbstractInputField<Boolean> {
 
-	public StringTextFieldModel() {
-		super(String.class);
+	public Checkbox(String label) {
+		super(label);
 	}
 
-	public StringTextFieldModel(final String label) {
-		super(label, String.class);
+	public Checkbox(String label, Boolean value) {
+		super(label, value);
 	}
 
-	public StringTextFieldModel(final String label, final Binding<String> binding) {
-		super(label, binding, String.class);
+	public Checkbox(String label, Binding<Boolean> binding) {
+		super(label, binding);
 	}
 
-	public StringTextFieldModel(final String label, final String value) {
-		super(label, value, String.class);
+	public Checkbox() {
+		super();
 	}
 
 	@Override
-	public Class<String> getModelClass() {
-		return String.class;
+	public Class<?> getModelClass() {
+		return Boolean.class;
 	}
 
 }

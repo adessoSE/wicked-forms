@@ -17,21 +17,21 @@ package org.wickedsource.wickedforms.wicket6.validators;
 import org.apache.wicket.validation.IValidatable;
 import org.apache.wicket.validation.IValidator;
 import org.apache.wicket.validation.ValidationError;
-import org.wickedsource.wickedforms.model.elements.fields.AbstractInputFieldModel;
-import org.wickedsource.wickedforms.model.validation.FieldValidatorModel;
+import org.wickedsource.wickedforms.model.elements.fields.AbstractInputField;
+import org.wickedsource.wickedforms.model.validation.FieldValidator;
 import org.wickedsource.wickedforms.model.validation.ValidationFeedback;
 
 public class WickedFieldValidator<T> implements IValidator<T> {
 
-	private final AbstractInputFieldModel<T> field;
+	private final AbstractInputField<T> field;
 
-	public WickedFieldValidator(final AbstractInputFieldModel<T> field) {
+	public WickedFieldValidator(final AbstractInputField<T> field) {
 		this.field = field;
 	}
 
 	@Override
 	public void validate(final IValidatable<T> validatable) {
-		for (FieldValidatorModel<T> v : this.field.getValidators()) {
+		for (FieldValidator<T> v : this.field.getValidators()) {
 			v.validate(this.field, validatable.getValue(), new WicketValidationFeedback<T>(validatable));
 		}
 	}

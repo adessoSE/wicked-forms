@@ -15,24 +15,23 @@
 package org.wickedsource.wickedforms.wicket7.components;
 
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.IModel;
-import org.wickedsource.wickedforms.model.FormModel;
-import org.wickedsource.wickedforms.model.validation.FormValidatorModel;
+import org.wickedsource.wickedforms.model.Form;
+import org.wickedsource.wickedforms.model.validation.FormValidator;
 import org.wickedsource.wickedforms.wicket7.PanelFactory;
 import org.wickedsource.wickedforms.wicket7.components.fields.SectionPanel;
 import org.wickedsource.wickedforms.wicket7.validators.WickedFormValidator;
 
-public class DynamicForm extends Form<FormModel> {
+public class DynamicForm extends org.apache.wicket.markup.html.form.Form<Form> {
 
 	private final Submittable submittable;
 
-	public DynamicForm(final String id, final IModel<FormModel> model, PanelFactory panelFactory,
+	public DynamicForm(final String id, final IModel<Form> model, PanelFactory panelFactory,
 			Submittable submittable) {
 		super(id, model);
 		this.submittable = submittable;
-		FormModel formModel = model.getObject();
+		Form formModel = model.getObject();
 		FeedbackPanel feedbackPanel = new FeedbackPanel("feedback") {
 			@Override
 			public boolean isVisible() {
@@ -44,7 +43,7 @@ public class DynamicForm extends Form<FormModel> {
 		add(new Label("formTitle", formModel.getLabel()));
 		add(new SectionPanel("sectionPanel", formModel.getMainSection(), panelFactory));
 
-		for (FormValidatorModel formValidator : formModel.getValidators()) {
+		for (FormValidator formValidator : formModel.getValidators()) {
 			add(new WickedFormValidator(formValidator, this));
 		}
 	}

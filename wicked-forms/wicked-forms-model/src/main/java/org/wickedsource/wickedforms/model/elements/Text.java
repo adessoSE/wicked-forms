@@ -23,7 +23,7 @@ import org.wickedsource.wickedforms.model.binding.Binding;
  * @author Tom Hombergs (tom.hombergs@gmail.com)
  * 
  */
-public class TextModel extends AbstractBoundFieldModel<String> {
+public class Text extends AbstractBoundField<String> {
 
 	/**
 	 * Constructor.
@@ -31,7 +31,7 @@ public class TextModel extends AbstractBoundFieldModel<String> {
 	 * @param text
 	 *            the text that should be displayed by this form element.
 	 */
-	public TextModel(String text) {
+	public Text(String text) {
 		super(text);
 	}
 
@@ -40,9 +40,9 @@ public class TextModel extends AbstractBoundFieldModel<String> {
 	 * 
 	 * @param binding
 	 *            the binding to back this form element.
-	 * @see AbstractFormElementModel#FormElement(Binding)
+	 * @see AbstractFormElement#FormElement(Binding)
 	 */
-	public TextModel(Binding<String> binding) {
+	public Text(Binding<String> binding) {
 		super(binding);
 	}
 
