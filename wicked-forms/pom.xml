@@ -20,13 +20,13 @@
 	<modules>
 		<module>wicked-forms-model</module>
 		<module>wicked-forms-wicket6</module>
+		<module>wicked-forms-wicket7</module>
 	</modules>
 
 	<properties>
-		<java.version>1.6</java.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
 
-		<junit.version>4.11</junit.version>
+		<junit.version>4.12</junit.version>
 		<maven-compiler-plugin.version>3.0</maven-compiler-plugin.version>
 	</properties>
 
