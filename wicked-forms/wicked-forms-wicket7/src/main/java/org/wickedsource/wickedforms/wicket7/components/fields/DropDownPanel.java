@@ -17,11 +17,11 @@ package org.wickedsource.wickedforms.wicket7.components.fields;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.model.PropertyModel;
-import org.wickedsource.wickedforms.model.elements.fields.DropDownModel;
+import org.wickedsource.wickedforms.model.elements.fields.DropDown;
 import org.wickedsource.wickedforms.wicket7.components.WickedFormsChoiceRenderer;
 
 /**
- * A panel that represents a {@link DropDownModel} in a form.
+ * A panel that represents a {@link DropDown} in a form.
  * <p/>
  * <strong>Wicket IDs needed in the markup:</strong>
  * <ul>
@@ -38,7 +38,7 @@ public class DropDownPanel<T> extends AbstractInputFieldPanel<T> {
 
 	private final DropDownChoice<T> dropdown;
 
-	public DropDownPanel(final String id, final DropDownModel<T> model) {
+	public DropDownPanel(final String id, final DropDown<T> model) {
 		super(id, model);
 
 		this.dropdown = new DropDownChoice<T>("inputField", new PropertyModel<T>(model, "value"),

@@ -26,9 +26,9 @@ import org.apache.wicket.markup.html.panel.ComponentFeedbackPanel;
 import org.apache.wicket.util.convert.IConverter;
 import org.apache.wicket.util.visit.IVisit;
 import org.apache.wicket.util.visit.IVisitor;
-import org.wickedsource.wickedforms.model.actions.FormActionModel;
-import org.wickedsource.wickedforms.model.elements.AbstractFormElementModel;
-import org.wickedsource.wickedforms.model.elements.fields.AbstractInputFieldModel;
+import org.wickedsource.wickedforms.model.actions.FormAction;
+import org.wickedsource.wickedforms.model.elements.AbstractFormElement;
+import org.wickedsource.wickedforms.model.elements.fields.AbstractInputField;
 import org.wickedsource.wickedforms.wicket7.validators.WickedFieldValidator;
 import org.wickedsource.wickedforms.wicket7.validators.WickedRequiredValidator;
 
@@ -38,7 +38,7 @@ public abstract class AbstractInputFieldPanel<T> extends AbstractFormElementPane
 
 	private final Label label;
 
-	public AbstractInputFieldPanel(final String id, final AbstractInputFieldModel<T> model) {
+	public AbstractInputFieldPanel(final String id, final AbstractInputField<T> model) {
 		super(id, model);
 
 		this.label = new Label("label", model.getLabel());
@@ -51,7 +51,7 @@ public abstract class AbstractInputFieldPanel<T> extends AbstractFormElementPane
 		}
 	}
 
-	private void addRequiredIfNeccessary(final FormComponent<T> component, final AbstractInputFieldModel<T> field) {
+	private void addRequiredIfNeccessary(final FormComponent<T> component, final AbstractInputField<T> field) {
 		if (field.isRequired()) {
 			WickedRequiredValidator<T> requiredValidator = new WickedRequiredValidator<T>(field);
 			component.add(requiredValidator);
@@ -69,7 +69,7 @@ public abstract class AbstractInputFieldPanel<T> extends AbstractFormElementPane
 	protected void decorateComponent(final Component component) {
 		super.decorateComponent(component);
 		FormComponent formComponent = (FormComponent) component;
-		AbstractInputFieldModel<T> model = (AbstractInputFieldModel<T>) this.getWickedFormModel();
+		AbstractInputField<T> model = (AbstractInputField<T>) this.getWickedFormModel();
 		this.addRequiredIfNeccessary(formComponent, model);
 		this.connectLabelAndInputField(formComponent, this.label);
 		formComponent.add(new WickedFieldValidator<T>(model));
@@ -80,13 +80,13 @@ public abstract class AbstractInputFieldPanel<T> extends AbstractFormElementPane
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private void addActions(final FormComponent component) {
-		AbstractInputFieldModel model = (AbstractInputFieldModel) this.getWickedFormModel();
-		for (final FormActionModel<T> action : (List<FormActionModel<T>>) model.getActions()) {
+		AbstractInputField model = (AbstractInputField) this.getWickedFormModel();
+		for (final FormAction<T> action : (List<FormAction<T>>) model.getActions()) {
 			AjaxFormSubmitBehavior submitBehavior = new AjaxFormSubmitBehavior("onchange") {
 				@Override
 				protected void onSubmit(AjaxRequestTarget target) {
 					AbstractInputFieldPanel.this.updateUserInput(this.getForm(), action.getTriggerInputFields());
-					List<AbstractFormElementModel> changedModels = action.execute();
+					List<AbstractFormElement> changedModels = action.execute();
 					AbstractInputFieldPanel.this.rerenderComponents(target, this.getForm(), changedModels);
 				}
 			};
@@ -97,15 +97,15 @@ public abstract class AbstractInputFieldPanel<T> extends AbstractFormElementPane
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private void rerenderComponents(final AjaxRequestTarget target, Form form,
-			final List<AbstractFormElementModel> changedModels) {
+			final List<AbstractFormElement> changedModels) {
 		form.visitFormComponents(new IVisitor<FormComponent<?>, Void>() {
 			@Override
 			public void component(FormComponent<?> component, IVisit<Void> visit) {
 				String id = component.getMetaData(AbstractFormElementPanel.COMPONENT_ID_KEY);
-				for (AbstractFormElementModel model : changedModels) {
+				for (AbstractFormElement model : changedModels) {
 					if (model.getId().equals(id)) {
-						if (model instanceof AbstractInputFieldModel) {
-							component.setEnabled(((AbstractInputFieldModel) model).isEnabled());
+						if (model instanceof AbstractInputField) {
+							component.setEnabled(((AbstractInputField) model).isEnabled());
 						}
 						component.setVisible(model.isVisible());
 						target.add(component);
@@ -126,12 +126,12 @@ public abstract class AbstractInputFieldPanel<T> extends AbstractFormElementPane
 	 * 
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	private void updateUserInput(Form form, final List<AbstractInputFieldModel<?>> sourceFieldModels) {
+	private void updateUserInput(Form form, final List<AbstractInputField<?>> sourceFieldModels) {
 		form.visitFormComponents(new IVisitor<FormComponent<?>, Void>() {
 			@Override
 			public void component(FormComponent<?> component, IVisit<Void> visit) {
 				String id = component.getMetaData(AbstractFormElementPanel.COMPONENT_ID_KEY);
-				for (AbstractInputFieldModel model : sourceFieldModels) {
+				for (AbstractInputField model : sourceFieldModels) {
 					if (model.getId().equals(id)) {
 						IConverter<?> converter;
 
