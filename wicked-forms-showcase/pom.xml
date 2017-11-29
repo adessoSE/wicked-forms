@@ -14,7 +14,6 @@
 		<module>../wicked-forms</module>
 		<module>wicked-forms-examples</module>
 		<module>wicked-forms-showcase-wicket6</module>
-		<module>wicked-forms-showcase-wicket7</module>
 	</modules>
 
 	<url>http://code.google.com/p/wicked-forms/</url>
