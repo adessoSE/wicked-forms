@@ -19,6 +19,7 @@
 
 	<modules>
 		<module>wicked-forms-model</module>
+		<module>wicked-forms-wicket6</module>
 		<module>wicked-forms-wicket7</module>
 	</modules>
 

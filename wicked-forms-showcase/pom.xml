@@ -13,6 +13,7 @@
 	<modules>
 		<module>../wicked-forms</module>
 		<module>wicked-forms-examples</module>
+		<module>wicked-forms-showcase-wicket6</module>
 		<module>wicked-forms-showcase-wicket7</module>
 	</modules>
 
@@ -85,6 +86,12 @@
 			<dependency>
 				<groupId>org.wickedsource.wickedforms</groupId>
 				<artifactId>wicked-forms-wicket7</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.wickedsource.wickedforms</groupId>
+				<artifactId>wicked-forms-wicket6</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			
