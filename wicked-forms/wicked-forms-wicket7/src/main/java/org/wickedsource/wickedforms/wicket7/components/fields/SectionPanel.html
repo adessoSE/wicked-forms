@@ -1,0 +1,28 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+	<div wicket:id="sectionFragment"></div>
+</wicket:panel>
+
+<wicket:fragment wicket:id="defaultSection" xmlns:wicket="http://wicket.apache.org">
+	<fieldset>
+		<legend wicket:id="sectionTitle" ></legend>
+		<ul>
+			<div wicket:id="elementList">
+				<li>
+					<div wicket:id="elementPanel" ></div>
+				</li>
+			</div>
+		</ul>
+		<input type="button" wicket:id="removeButton"/>
+	</fieldset>
+</wicket:fragment>
+
+<wicket:fragment wicket:id="hiddenSection" xmlns:wicket="http://wicket.apache.org">
+		<ul>
+			<div wicket:id="elementList">
+				<li>
+					<div wicket:id="elementPanel" ></div>
+				</li>
+			</div>
+		</ul>
+		<input type="button" wicket:id="removeButton"/>
+</wicket:fragment>
