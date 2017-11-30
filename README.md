@@ -12,7 +12,7 @@ To view the showcase app, follow these steps:
 
 Why dynamic forms?
 ==================
-Wicked Forms is a Java library you can use to create dynamic forms in your Java web applications. A static form is a form that is defined once and cannot change it's structure whereas a dynamic form is a form that can be defined at runtime.
+Wicked Forms is a Java library you can use to create dynamic forms in your Java web applications (more specifically with Apache Wicket). A static form is a form that is defined once and cannot change it's structure whereas a dynamic form is a form that can be defined at runtime.
 
 Use cases for dynamic forms include the following:
 
