@@ -1,0 +1,6 @@
+dependencies {
+	compile "org.apache.wicket:wicket-core:6.28.0"
+	compile "org.apache.commons:commons-lang3:3.0"
+	compile project(":wicked-forms:wicked-forms-model")
+	testCompile 'junit:junit:4.12'
+}

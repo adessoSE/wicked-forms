@@ -1,10 +1,11 @@
 language: java
 
 jdk:
-  - openjdk7
+  - openjdk8
 
-install:
-  - cd wicked-forms && mvn clean install -DskipTests=true
-
-script:
-  - mvn test
+jobs:
+  include:
+    - stage: build
+      script: ./gradlew build -x test
+    - stage: test
+      script: ./gradlew test

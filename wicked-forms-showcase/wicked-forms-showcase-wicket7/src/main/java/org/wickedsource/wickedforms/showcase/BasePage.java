@@ -8,7 +8,7 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.Fragment;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.resource.JQueryResourceReference;
-import org.wickedsource.wickedforms.model.FormModel;
+import org.wickedsource.wickedforms.model.Form;
 import org.wickedsource.wickedforms.wicket7.components.FormPanel;
 
 public class BasePage extends WebPage {
@@ -17,7 +17,7 @@ public class BasePage extends WebPage {
 		this(StaticFragment.USAGE);
 	}
 
-	public BasePage(final FormModel formModel, final Class<?> exampleCode) {
+	public BasePage(final Form formModel, final Class<?> exampleCode) {
 		initContentPanel(formModel);
 		initCodeContainer(exampleCode);
 		initShowCodeButtonContainer(exampleCode);
@@ -41,10 +41,10 @@ public class BasePage extends WebPage {
 		add(container);
 	}
 
-	private void initContentPanel(final FormModel formModel) {
+	private void initContentPanel(final Form formModel) {
 		add(new FormPanel("contentPanel", Model.of(formModel)) {
 			@Override
-			public void onSubmit(final FormModel submittedData) {
+			public void onSubmit(final Form submittedData) {
 				System.out.println("form submit");
 			}
 		});

@@ -23,8 +23,6 @@ public class WicketApplication extends WebApplication {
 		super.init();
 
 		this.getMarkupSettings().setStripWicketTags(true);
-		this.getMarkupSettings().setDefaultAfterDisabledLink("");
-		this.getMarkupSettings().setDefaultBeforeDisabledLink("");
 
 		this.mountPage("usage", UsagePage.class);
 		this.mountPage("section", SectionPage.class);

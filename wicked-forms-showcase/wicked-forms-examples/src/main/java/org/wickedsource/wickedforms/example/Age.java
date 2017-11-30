@@ -1,8 +1,7 @@
 package org.wickedsource.wickedforms.example;
 
-import org.wickedsource.wickedforms.model.elements.fields.ChoiceLabeller;
-
 import java.io.Serializable;
+import org.wickedsource.wickedforms.model.elements.fields.ChoiceLabeller;
 
 public enum Age implements Serializable {
 

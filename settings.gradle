@@ -1,0 +1,6 @@
+include 'wicked-forms:wicked-forms-model'
+include 'wicked-forms:wicked-forms-wicket6'
+include 'wicked-forms:wicked-forms-wicket7'
+include 'wicked-forms-showcase:wicked-forms-examples'
+include 'wicked-forms-showcase:wicked-forms-showcase-wicket6'
+include 'wicked-forms-showcase:wicked-forms-showcase-wicket7'
