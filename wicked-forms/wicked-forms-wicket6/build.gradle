@@ -4,3 +4,10 @@ dependencies {
 	testCompile 'junit:junit:4.12'
 }
 
+jar {
+	from('src/main/java') {
+		include '**/*.html'
+		include '**/*.properties'
+	}
+}
+

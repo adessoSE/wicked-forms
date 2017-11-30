@@ -4,3 +4,9 @@ dependencies {
 	compile project(":wicked-forms:wicked-forms-model")
 	testCompile 'junit:junit:4.12'
 }
+
+jar {
+	from('src/main/java') {
+		include '**/*.java'
+	}
+}

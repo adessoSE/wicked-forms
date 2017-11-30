@@ -9,3 +9,4 @@ dependencies {
 	compile project(":wicked-forms:wicked-forms-wicket7")
 	testCompile 'junit:junit:4.12'
 }
+

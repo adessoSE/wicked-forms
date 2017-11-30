@@ -33,6 +33,9 @@ public class StringFromResourceModel implements IModel<String> {
 		BufferedReader reader = null;
 		try {
 			in = scope.getResourceAsStream(resourceName);
+			if(in == null){
+				throw new IOException(String.format("cannot find resource '%s' relative to class '%s' in classpath!", resourceName, scope.getName()));
+			}
 			reader = new BufferedReader(
 					new InputStreamReader(in));
 			StringBuffer stringBuffer = new StringBuffer();
