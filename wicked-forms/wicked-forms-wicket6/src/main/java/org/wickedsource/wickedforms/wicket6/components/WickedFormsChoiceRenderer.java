@@ -14,6 +14,7 @@
  */
 package org.wickedsource.wickedforms.wicket6.components;
 
+import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
 import org.wickedsource.wickedforms.model.elements.fields.ChoiceLabeller;
 
@@ -31,7 +32,7 @@ public class WickedFormsChoiceRenderer {
 	 *         {@link ChoiceLabeller}
 	 */
 	public static <T> IChoiceRenderer<T> fromChoiceLabeller(final ChoiceLabeller<T> labeller) {
-		return new IChoiceRenderer<T>() {
+		return new ChoiceRenderer<T>() {
 
 			@Override
 			public Object getDisplayValue(final T object) {

@@ -1,10 +1,16 @@
 language: java
 
-jdk:
-  - openjdk7
+sudo: false
+addons:
+  apt:
+    packages:
+      - oracle-java8-installer
 
-install:
-  - cd wicked-forms && mvn clean install -DskipTests=true
+before_install:
+  - chmod +x gradlew
 
-script:
-  - mvn test
+jobs:
+  include:
+    - stage: build
+      language: java
+      script: ./gradlew build

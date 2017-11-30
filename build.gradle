@@ -1,0 +1,20 @@
+subprojects {
+
+	apply plugin: 'java'
+    
+    buildscript {
+		repositories {
+			mavenCentral()
+		}
+	}
+
+	repositories {
+		mavenLocal()
+		mavenCentral()
+	}
+
+	version = '1.0.0-BETA'
+	sourceCompatibility = 1.8
+	targetCompatibility = 1.8
+
+}
