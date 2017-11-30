@@ -1,6 +1,76 @@
+plugins {
+	id "com.jfrog.bintray" version "1.5"
+}
+
+apply plugin: 'maven-publish'
+
 dependencies {
 	compile "commons-beanutils:commons-beanutils:1.8.3"
 	compile "commons-lang:commons-lang:2.6"
 	testCompile 'junit:junit:4.12'
+}
+
+install {
+	repositories.mavenInstaller {
+		pom.project {
+			name 'EasyGoogle'
+			description 'A wrapper library for basic functions of Google Play Services APIs'
+			url 'https://github.com/googlesamples/easygoogle'
+			inceptionYear '2015'
+
+			packaging 'aar'
+			groupId 'pub.devrel'
+			artifactId 'android-maven-example'
+			version '0.1'
+
+			licenses {
+				license {
+					name 'The Apache Software License, Version 2.0'
+					url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+					distribution 'repo'
+				}
+			}
+			scm {
+				connection 'https://github.com/googlesamples/easygoogle.git'
+				url 'https://github.com/googlesamples/easygoogle'
+
+			}
+			developers {
+				developer {
+					name 'Google'
+				}
+			}
+		}
+	}
+}
+
+bintray {
+	user = System.getenv('BINTRAY_USER')
+	key = System.getenv('BINTRAY_API_KEY')
+	configurations = ['archives']
+	pkg {
+		repo = 'maven'
+		name = 'wicked-forms-model'
+		userOrg = 'adesso'
+		licenses = ['Apache-2.0']
+		vcsUrl = 'https://github.com/thombergs/wicked-forms.git'
+		version {
+			name = project.version
+			desc = project.version
+			vcsTag = project.version
+			attributes = []
+		}
+	}
+}
+
+publishing {
+	publications {
+		MyPublication(MavenPublication) {
+			from components.java
+			groupId 'de.adesso'
+			artifactId 'wicked-forms'
+			version project.version
+		}
+	}
 }
 
