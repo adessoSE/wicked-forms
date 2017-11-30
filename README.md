@@ -1,10 +1,14 @@
 Wicked Forms
 ============
-[![Build Status](https://travis-ci.org/thombergs/wicked-forms.png?branch=travis)](https://travis-ci.org/thombergs/wicked-forms)
+[![Build Status](https://travis-ci.org/adessoag/wicked-forms.png?branch=travis)](https://travis-ci.org/thombergs/wicked-forms)
 
 Showcase
 ========
-http://www.wicked-forms.org/wicked-forms-showcase-wicket6/
+To view the showcase app, follow these steps:
+* clone the repo
+* run `./gradlew build` (or `gradlew.bat build` on Windows)
+* drop the WAR file from the folder `wicked-forms-showcase-wicket7/build/libs` into a Tomcat's `webapp` dir (you might want to rename it to `showcase.war`)
+* open `localhost:8080/<NAME_OF_THE_WAR>` in your browser
 
 Why dynamic forms?
 ==================
@@ -37,13 +41,4 @@ Planned Features of Wicked Forms
 * reasonably nice default design
 * overridable design (CSS, HTML)
 
-Architecture of Wicked Forms
-============================
-Wicked Forms consists of the following components
 
-* wicked-forms-model: a library with which you can model forms without dependency to any web framework
-* wicked-forms-wicket6: a Wicket 6 component which can be used to display a form model in a Wicket 6 web application
-
-Current Status
-==============
-Wicked forms is currently in ALPHA stadium. However, the architecture is defined and the concept has been proven by the XVergabe showcase: http://www.wicked-forms.org/wicked-forms-showcase-xvergabe. Work on version 1.0 will begin shortly. Get in touch with us if you have any feature requests or ideas.
