@@ -12,6 +12,5 @@ before_install:
 jobs:
   include:
     - stage: build
-      script: ./gradlew build -x test
-    - stage: test
-      script: ./gradlew test
+      language: java
+      script: ./gradlew build
