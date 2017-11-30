@@ -1,6 +1,6 @@
 Wicked Forms
 ============
-[![Build Status](https://travis-ci.org/adessoAG/wicked-forms)](https://travis-ci.org/adessoAG/wicked-forms)
+[![Build Status](https://travis-ci.org/adessoAG/wicked-forms.svg?branch=master)](https://travis-ci.org/adessoAG/wicked-forms)
 
 Showcase
 ========
