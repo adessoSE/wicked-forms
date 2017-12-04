@@ -1,14 +1,35 @@
 Wicked Forms
 ============
-[![Build Status](https://travis-ci.org/thombergs/wicked-forms.png?branch=travis)](https://travis-ci.org/thombergs/wicked-forms)
+[![Build Status](https://travis-ci.org/adessoAG/wicked-forms.svg?branch=master)](https://travis-ci.org/adessoAG/wicked-forms)
 
 Showcase
 ========
-http://www.wicked-forms.org/wicked-forms-showcase-wicket6/
+To view the showcase app, follow these steps:
+* clone the repo
+* run `./gradlew build` (or `gradlew.bat build` on Windows)
+* drop the WAR file from the folder `wicked-forms-showcase-wicket7/build/libs` into a Tomcat's `webapp` dir (you might want to rename it to `showcase.war`)
+* open `localhost:8080/<NAME_OF_THE_WAR>` in your browser
+
+Include in Gradle build
+=======================
+To include wicked-forms in your Gradle build, add the following to your `build.gradle`
+
+```
+repositories {
+	maven {
+		url  "https://dl.bintray.com/adesso/wicked-forms"
+	}
+}
+
+dependencies {
+  compile "de.adesso:wicked-forms-wicket-6:1.0.0-BETA" // when using Wicket 6
+  compile "de.adesso:wicked-forms-wicket-7:1.0.0-BETA" // when using Wicket 7
+}
+```
 
 Why dynamic forms?
 ==================
-Wicked Forms is a Java library you can use to create dynamic forms in your Java web applications. A static form is a form that is defined once and cannot change it's structure whereas a dynamic form is a form that can be defined at runtime.
+Wicked Forms is a Java library you can use to create dynamic forms in your Java web applications (more specifically with Apache Wicket). A static form is a form that is defined once and cannot change it's structure whereas a dynamic form is a form that can be defined at runtime.
 
 Use cases for dynamic forms include the following:
 
@@ -37,13 +58,4 @@ Planned Features of Wicked Forms
 * reasonably nice default design
 * overridable design (CSS, HTML)
 
-Architecture of Wicked Forms
-============================
-Wicked Forms consists of the following components
 
-* wicked-forms-model: a library with which you can model forms without dependency to any web framework
-* wicked-forms-wicket6: a Wicket 6 component which can be used to display a form model in a Wicket 6 web application
-
-Current Status
-==============
-Wicked forms is currently in ALPHA stadium. However, the architecture is defined and the concept has been proven by the XVergabe showcase: http://www.wicked-forms.org/wicked-forms-showcase-xvergabe. Work on version 1.0 will begin shortly. Get in touch with us if you have any feature requests or ideas.
