@@ -10,6 +10,23 @@ To view the showcase app, follow these steps:
 * drop the WAR file from the folder `wicked-forms-showcase-wicket7/build/libs` into a Tomcat's `webapp` dir (you might want to rename it to `showcase.war`)
 * open `localhost:8080/<NAME_OF_THE_WAR>` in your browser
 
+Include in Gradle build
+=======================
+To include wicked-forms in your Gradle build, add the following to your `build.gradle`
+
+```
+repositories {
+	maven {
+		url  "https://dl.bintray.com/adesso/wicked-forms"
+	}
+}
+
+dependencies {
+  compile "de.adesso:wicked-forms-wicket-6:1.0.0-BETA" // when using Wicket 6
+  compile "de.adesso:wicked-forms-wicket-7:1.0.0-BETA" // when using Wicket 7
+}
+```
+
 Why dynamic forms?
 ==================
 Wicked Forms is a Java library you can use to create dynamic forms in your Java web applications (more specifically with Apache Wicket). A static form is a form that is defined once and cannot change it's structure whereas a dynamic form is a form that can be defined at runtime.
