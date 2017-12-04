@@ -5,16 +5,24 @@ subprojects {
     buildscript {
 		repositories {
 			mavenCentral()
+			jcenter()
 		}
 	}
 
 	repositories {
 		mavenLocal()
 		mavenCentral()
+		jcenter()
 	}
 
-	version = '1.0.0-BETA'
+	version = '1.0.1.BETA'
 	sourceCompatibility = 1.8
 	targetCompatibility = 1.8
+
+	ext{
+		bintrayUser = System.getProperty("bintray.user")
+		bintrayKey = System.getProperty("bintray.key")
+		bintrayVersion = project.version
+	}
 
 }
