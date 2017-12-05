@@ -16,9 +16,7 @@ To include wicked-forms in your Gradle build, add the following to your `build.g
 
 ```
 repositories {
-	maven {
-		url  "https://dl.bintray.com/adesso/wicked-forms"
-	}
+  jcenter()
 }
 
 dependencies {
