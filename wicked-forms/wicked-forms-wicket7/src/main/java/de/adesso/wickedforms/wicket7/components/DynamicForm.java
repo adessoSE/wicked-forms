@@ -16,6 +16,7 @@ package de.adesso.wickedforms.wicket7.components;
 
 import de.adesso.wickedforms.model.validation.FormValidator;
 import de.adesso.wickedforms.wicket7.PanelFactory;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.IModel;
@@ -27,8 +28,12 @@ public class DynamicForm extends org.apache.wicket.markup.html.form.Form<Form> {
 
 	private final Submittable submittable;
 
+	public DynamicForm(final String id, final IModel<Form> model, PanelFactory panelFactory, Submittable submittable){
+	    this(id, model, panelFactory, submittable, true);
+    }
+
 	public DynamicForm(final String id, final IModel<Form> model, PanelFactory panelFactory,
-			Submittable submittable) {
+			Submittable submittable, boolean showSubmitButton) {
 		super(id, model);
 		this.submittable = submittable;
 		Form formModel = model.getObject();
@@ -46,6 +51,10 @@ public class DynamicForm extends org.apache.wicket.markup.html.form.Form<Form> {
 		for (FormValidator formValidator : formModel.getValidators()) {
 			add(new WickedFormValidator(formValidator, this));
 		}
+
+        WebMarkupContainer submittableContainer = new WebMarkupContainer("submittableContainer");
+		submittableContainer.setVisible(showSubmitButton);
+        add(submittableContainer);
 	}
 
 	@Override
