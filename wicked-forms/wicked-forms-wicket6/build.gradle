@@ -50,7 +50,7 @@ publishing {
 			artifact javadocJar {
 				classifier "javadoc"
 			}
-			groupId 'de.adesso'
+			groupId 'de.adesso.wickedforms'
 			artifactId 'wicked-forms-wicket-6'
 			version bintrayVersion
 			pom.withXml {
